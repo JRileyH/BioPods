@@ -1,23 +1,19 @@
 <html>
 <head>
     <script src="node_modules/craftyjs/dist/crafty.js"></script>
-    <script src="src/sprites/blocks.js"></script>
-    <script src="src/utils/pod_util.js"></script>
-    <script src="src/systems/pod.js"></script>
-    <script src="src/entities/block.js"></script>
 </head>
 <body>
     <div id="GameWindow" style="outline:1px solid black"></div>
     <script>
          window.gameInfo = {
-             WIDTH: 810,
+             WIDTH: 700,
              TILE_WIDTH: 10,
-             HEIGHT: 550,
+             HEIGHT: 450,
              TILE_HEIGHT: 10
          }
         Crafty.init(gameInfo.WIDTH,gameInfo.HEIGHT, document.getElementById('GameWindow'));
     </script>
-    <script src="index.js"></script>
+    <script src="dist/app.bundle.js"></script>
     <button type="button" onclick="test()">Test</button>
 </body>
 </html>

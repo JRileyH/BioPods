@@ -1,3 +1,6 @@
+require('./systems')
+require('./entities')
+require('./sprites')
 
 var pod = Crafty.s("Pod").build();
 
