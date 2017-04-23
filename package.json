@@ -1,0 +1,25 @@
+{
+  "name": "biopods",
+  "version": "1.0.0",
+  "description": "An idle farmsim expiriment",
+  "main": "index.js",
+  "dependencies": {
+    "craftyjs": "^0.7.1"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sleepy-Fish/BioPods.git"
+  },
+  "author": "J Riley Harrington <jrileyharrington@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sleepy-Fish/BioPods/issues"
+  },
+  "homepage": "https://github.com/Sleepy-Fish/BioPods#readme"
+}
