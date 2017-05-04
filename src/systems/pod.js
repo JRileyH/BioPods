@@ -112,7 +112,6 @@ Crafty.s("Pod", {
     },
     buildBlocks: function(layout) {
         var info = {x: 0, y: 0};
-        console.log(layout)
         for(let id of layout.blocks) {
             this.layout.blocks.push(Crafty.e("Block").attr({layout: layout}).create(id, info));
             if(info.x >= layout.dim.w-1) {
@@ -121,7 +120,6 @@ Crafty.s("Pod", {
             } else if (info.y < layout.dim.h){
                 info.x++;
             } else {
-                console.log(info);
                 break;
             }
         }

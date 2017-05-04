@@ -1,5 +1,5 @@
 Crafty.c("Block", {
-    required: "2D, DOM",
+    required: "2D, DOM, Mouse",
     init: function() {
 
     },

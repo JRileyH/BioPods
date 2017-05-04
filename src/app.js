@@ -2,10 +2,13 @@ require('./systems')
 require('./entities')
 require('./sprites')
 
-var pod = Crafty.s("Pod").build();
+//var pod = Crafty.s("Pod").build();
 
-function test(){
-    console.log("Test run")
+var vine = Crafty.s("Vine");
+
+window.test = function(){
+    console.log('Testing...');
+    vine.grow();
 }
 
 var audio =  {
