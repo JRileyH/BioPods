@@ -70,375 +70,358 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(4);
-__webpack_require__(5)
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    Plant: __webpack_require__(13).default,
+    Part: __webpack_require__(5).default,
+    Seed: __webpack_require__(9).default,
+    Meristem: __webpack_require__(10).default,
+    Stem: __webpack_require__(11).default
+};
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(6);
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(7);
-
-/***/ }),
+/* 1 */,
+/* 2 */,
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2)
-__webpack_require__(0)
-__webpack_require__(1)
+"use strict";
 
-//var pod = Crafty.s("Pod").build();
 
-var vine = Crafty.s("Vine");
+var Plant = __webpack_require__(0).default.Plant;
+var plant1 = new Plant(300, 400);
 
-window.test = function(){
-    console.log('Testing...');
-    vine.grow();
-}
-
-var audio =  {
-        "beep": ["beep.wav", "beep.mp3"],
-        "meep": ["meep.wav", "meep.mp3"],
-        "berp": ["berp.wav", "berp.mp3"]
-    }
-Crafty.paths({audio:"res/audio/", images:""})
-Crafty.load({audio, function(){
-
-}});
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-Crafty.c("Block", {
-    required: "2D, DOM, Mouse",
-    init: function() {
-
-    },
-    events: {
-
-    },
-    create: function(id, info) {
-        if(id!=undefined)
-        this.addComponent("block-"+id.type+"-"+id.config);
-        this.w = this.layout.dim.tw;
-        this.h = this.layout.dim.th;
-        this.x = info.x * this.w;
-        this.y = info.y * this.h;
-    }
-});
+window.grow = function () {
+    plant1.grow();
+};
+window.render = function () {
+    plant1.render();
+};
+window.startGrowth = function () {
+    window.growLoop = setInterval(function () {
+        plant1.grow();
+    }, 1000);
+    window.renderLoop = setInterval(function () {
+        plant1.render();
+    }, 10);
+};
+window.stopGrowth = function () {
+    if (!!window.growLoop) clearInterval(growLoop);
+    if (!!window.renderLoop) clearInterval(renderLoop);
+};
 
 /***/ }),
+/* 4 */,
 /* 5 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-window.opposites = {
-    up:'down',
-    down:'up',
-    left:'right',
-    right:'left'
-}
-window.plantMatter = new Array();
-for(let x = 0; x < gameInfo.WIDTH/gameInfo.TILE_WIDTH; x++){
-    plantMatter.push(new Array());
-    for(let y = 0; y < gameInfo.HEIGHT/gameInfo.TILE_HEIGHT; y++){
-        plantMatter[x].push(false)
-    }
-}
+"use strict";
 
-Crafty.c("Seed", {
-    required: "2D, DOM, Color",
-    init: function() {
-        this.type="seed";
-        this.progeny = [];
-        this.color('purple');
-        this.w = gameInfo.TILE_WIDTH;
-        this.h = gameInfo.TILE_HEIGHT;
-        this.level = 0;
-    },
-    place: function(plant, props) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var PlantPart = function () {
+    function PlantPart(plant, source, props) {
+        _classCallCheck(this, PlantPart);
+
+        this.type = "untyped";
         this.plant = plant;
-        this.x = props.x*gameInfo.TILE_WIDTH;
-        this.y = props.y*gameInfo.TILE_HEIGHT;
-        this.progeny = [Crafty.e("Meristem").place(this.plant, this, {x:props.x, y:props.y-1, direction:'up'})];
-        return this;
-    },
-    grow: function() {
-        for(let p of this.progeny) {
-            p.grow();
+        this.id = this.plant.availableId++;
+        this.parent = source;
+        this.children = [];
+        this.level = !!source ? source.level + 1 : 0;
+        if (this._verifyProps(props)) {
+            this.x = props.x;
+            this.y = props.y;
+            this.dir = this._clampDir(props.dir);
         }
     }
-});
 
-Crafty.c("Meristem", {
-    required: "2D, DOM, Color",
-    init: function() {
-        this.type="meristem";
-        this.color('blue');
-        this.chanceToGrow = null;
-        this.w = gameInfo.TILE_WIDTH;
-        this.h = gameInfo.TILE_HEIGHT;
-    },
-    place: function(plant, source, props) {
-        this.plant = plant;
-        this.progenitor = source;
-        this.level = source.level+1;
-        this.x = props.x*gameInfo.TILE_WIDTH;
-        this.y = props.y*gameInfo.TILE_HEIGHT;
-        if(plantMatter[props.x][props.y]) {
-            source.canGrow = false;
-            this.destroy(); 
-        } else {
-            plantMatter[props.x][props.y] = true;
+    _createClass(PlantPart, [{
+        key: "_verifyProps",
+        value: function _verifyProps(props) {
+            if (!props.hasOwnProperty('x')) {
+                console.error("MISSING PROPS.X");return false;
+            }
+            if (!props.hasOwnProperty('y')) {
+                console.error("MISSING PROPS.Y");return false;
+            }
+            if (!props.hasOwnProperty('dir')) {
+                console.error("sMISSING PROPS.DIR");return false;
+            }
+            return true;
         }
-        this.direction = props.direction;
-        return this;
-    },
-    grow: function(){
-        if(this.getChanceToGrow()>Math.floor(Math.random()*100)) {
-            this._grow();
+    }, {
+        key: "_clampDir",
+        value: function _clampDir(dir) {
+            var clamped = dir % 360;
+            if (clamped < 0) clamped += 360;
+            return clamped;
         }
-    },
-    getChanceToGrow: function() {
-        //if(this.chanceToGrow!=null) return this.chanceToGrow;
-        var chance = 100;
-        var node = this.progenitor;
-        while(chance > 0) {
-            if(node.type==="seed") break;
-            chance-=5;
-            node = node.progenitor;
-            console.log(node.type);
+    }, {
+        key: "removeChild",
+        value: function removeChild(id) {
+            this.children = this.children.filter(function (x) {
+                return x.id != id;
+            });
         }
-        this.chanceToGrow = chance;
-        console.log(this.chanceToGrow)
-        return this.chanceToGrow;
-    },
-    getChanceToBranch: function() {
-        var chance = 0;
-        var node = this.progenitor;
-        while(chance <= 100) {
-            if(node.type==="meristem" || node.type==="seed") break;
-            chance+=10;
-            node = node.progenitor;
-        }
-        this.chanceToBranch = chance;
-        return this.chanceToBranch;
-    },
-    _grow: function() {
-        //this.chanceToGrow = null;
-        var thisId = this.getId();
-        if(this.getChanceToBranch()>Math.floor(Math.random()*100)) {
-            var newStem = Crafty.e("Meristem").place(this.plant, this.progenitor, {x:this.x/gameInfo.TILE_WIDTH, y:this.y/gameInfo.TILE_HEIGHT, direction:'right'});
-        } else {
-            var newStem = Crafty.e("Stem").place(this.plant, this);
-        }
-        this.progenitor.progeny = this.progenitor.progeny.filter(function(x){ return x.getId() !== thisId})
-        this.progenitor.progeny.push(newStem);
-        this.progenitor = newStem;
-        this.level++;
-        switch(this.direction){
-            case 'up':
-                this.y -= gameInfo.TILE_HEIGHT;
-            break;
-            case 'down':
-                this.y += gameInfo.TILE_HEIGHT;
-            break;
-            case 'left':
-                this.x -= gameInfo.TILE_WIDTH;
-            break;
-            case 'right':
-                this.x += gameInfo.TILE_WIDTH;
-            break;
-        }
-    }
-});
+    }, {
+        key: "grow",
+        value: function grow() {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
 
-Crafty.c("Stem", {
-    required: "2D, DOM, Color",
-    init: function() {
-        this.type="stem";
-        this.progeny = [];
-        this.color('green');
-        this.w = gameInfo.TILE_WIDTH;
-        this.h = gameInfo.TILE_HEIGHT;
-    },
-    place: function(plant, source, props) {
-        this.plant = plant;
-        this.progeny = [source];
-        this.level = source.level;
-        this.progenitor = source.progenitor;
-        this.x = source.x;
-        this.y = source.y;
-        this.direction = source.direction;
-        return this;
-    },
-    grow: function() {
-        for(let p of this.progeny) {
-            p.grow();
-        }
-    }
-});
+            try {
+                for (var _iterator = this.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
 
-Crafty.s("Vine", {
-    init: function() {
-        this.seed = Crafty.e("Seed").place(this, {x:20,y:40});
-    },
-    grow: function() {
-        this.seed.grow();
-    }
-});
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-Crafty.sprite(32, "res/blocks/debug.png", {
-    'block-0-0':[0,0],//blank
-    'block-0-1':[1,0],//full
-    'block-0-2':[0,1],//top right
-    'block-0-3':[1,1],//bottom right
-    'block-0-4':[2,1],//bottom left
-    'block-0-5':[3,1] //top left
-});
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-//Ship System Definition
-Crafty.s("Pod", {
-    init: function() {
-        this.layout = null;
-    },
-    events: {
-
-    },
-
-    _outline: function(w, h) {
-        for(let y = 0; y < h; y++) {
-            for(let x = 0; x < w; x++) {
-                if(y===0 || x===0 || y===h-1 || x===w-1){
-                    this.layout.blocks.push({type: 0, config: 1})
-                } else {
-                    this.layout.blocks.push({type: 0, config: 0})
+                    child.grow();
                 }
-            }
-        }
-        return this;
-    },
-    _speckle: function(w, h, c){
-        for(let y = 1; y < h-1; y++) {
-            for(let x = 1; x < w-1; x++) {
-                let chance = c;
-                if(Math.random()<chance) this.layout.blocks[(y*w)+x].config = 1;
-            }
-        }
-        return this;
-    },
-    _fillout: function(w, h, n){
-        for(let i = 0; i < n; i++){
-            for(let y = 1; y < h-1; y++) {
-                for(let x = 1; x < w-1; x++) {
-                    let chance = 0;
-                    if(this.layout.blocks[((y-1)*w)+(x-1)].config>0) chance+=0.125;
-                    if(this.layout.blocks[((y-1)*w)+(x+1)].config>0) chance+=0.125;
-                    if(this.layout.blocks[((y+1)*w)+(x-1)].config>0) chance+=0.125;
-                    if(this.layout.blocks[((y+1)*w)+(x+1)].config>0) chance+=0.125;
-
-                    if(this.layout.blocks[((y-1)*w)+(x)].config>0) chance+=0.125;
-                    if(this.layout.blocks[((y+1)*w)+(x)].config>0) chance+=0.125;
-                    if(this.layout.blocks[((y)*w)+(x-1)].config>0) chance+=0.125;
-                    if(this.layout.blocks[((y)*w)+(x+1)].config>0) chance+=0.125;
-
-                    if(Math.random()<chance) this.layout.blocks[(y*w)+x].config = 1;
-                }
-            }
-        }
-        return this;
-    },
-    _fillin: function(w, h) {
-        for(let y = 1; y < h-1; y++) {
-            for(let x = 1; x < w-1; x++) {
-                var borders = {t: false, b: false, l: false, r:false, total: 0};
-                if(this.layout.blocks[((y)*w)+(x)].config==1) continue;
-                if(this.layout.blocks[((y-1)*w)+(x)].config==1) {borders.total++; borders.t = true;}
-                if(this.layout.blocks[((y+1)*w)+(x)].config==1) {borders.total++; borders.b = true;}
-                if(this.layout.blocks[((y)*w)+(x-1)].config==1) {borders.total++; borders.l = true;}
-                if(this.layout.blocks[((y)*w)+(x+1)].config==1) {borders.total++; borders.r = true;}
-
-                if(borders.total>2) {
-                    this.layout.blocks[(y*w)+x].config = 1;
-                } else if(borders.total===2) {
-                    switch(true){
-                        case (borders.t&&borders.l):
-                            this.layout.blocks[(y*w)+x].config = 2;
-                        break;
-                        case (borders.b&&borders.r):
-                            this.layout.blocks[(y*w)+x].config = 3;
-                        break;
-                        case (borders.b&&borders.l):
-                            this.layout.blocks[(y*w)+x].config = 4;
-                        break;
-                        case (borders.t&&borders.r):
-                            this.layout.blocks[(y*w)+x].config = 5;
-                        break;
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
                     }
                 }
-                
             }
         }
-        return this;
-    },
+    }, {
+        key: "render",
+        value: function render(ctx) {
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
 
-    generateBlocks: function(w, h) {
-        return this.
-            _outline(w, h).
-            _speckle(w, h, 0.01).
-            _fillout(w, h, 4).
-            _fillin(w, h);
-    },
+            try {
+                for (var _iterator2 = this.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var child = _step2.value;
 
-    generateLayout: function(){
-        this.layout = {
-            dim: {
-                w: Math.floor(gameInfo.WIDTH/gameInfo.TILE_WIDTH),
-                h: Math.floor(gameInfo.HEIGHT/gameInfo.TILE_HEIGHT),
-                tw: gameInfo.TILE_WIDTH,
-                th: gameInfo.TILE_HEIGHT
-            },
-            blocks: []
-        }
-        return this.
-            generateBlocks(this.layout.dim.w, this.layout.dim.h);
-    },
-    build: function(layout){
-        return this.
-            generateLayout().
-            buildBlocks(this.layout)
+                    child.render(ctx);
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
 
-    },
-    buildBlocks: function(layout) {
-        var info = {x: 0, y: 0};
-        for(let id of layout.blocks) {
-            this.layout.blocks.push(Crafty.e("Block").attr({layout: layout}).create(id, info));
-            if(info.x >= layout.dim.w-1) {
-                info.x = 0;
-                info.y++;
-            } else if (info.y < layout.dim.h){
-                info.x++;
-            } else {
-                break;
+            if (!!this.parent) {
+                ctx.beginPath();
+                ctx.moveTo(this.parent.x, this.parent.y);
+                ctx.lineTo(this.x, this.y);
+                ctx.stroke();
             }
         }
-        return this;
-    }
+    }]);
+
+    return PlantPart;
+}();
+
+exports.default = PlantPart;
+
+/***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Seed = function (_require$default) {
+    _inherits(Seed, _require$default);
+
+    function Seed(plant, source, props) {
+        _classCallCheck(this, Seed);
+
+        var _this = _possibleConstructorReturn(this, (Seed.__proto__ || Object.getPrototypeOf(Seed)).call(this, plant, source, props));
+
+        _this.type = "seed";
+        _this.children.push(new (__webpack_require__(10).default)(_this.plant, _this, { x: _this.x, y: _this.y - _this.plant.segmentLength, dir: 0 }));
+        return _this;
+    }
+
+    return Seed;
+}(__webpack_require__(5).default);
+
+exports.default = Seed;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Meristem = function (_require$default) {
+    _inherits(Meristem, _require$default);
+
+    function Meristem(plant, source, props) {
+        _classCallCheck(this, Meristem);
+
+        var _this = _possibleConstructorReturn(this, (Meristem.__proto__ || Object.getPrototypeOf(Meristem)).call(this, plant, source, props));
+
+        _this.type = "meristem";
+        return _this;
+    }
+
+    _createClass(Meristem, [{
+        key: 'grow',
+        value: function grow() {
+            _get(Meristem.prototype.__proto__ || Object.getPrototypeOf(Meristem.prototype), 'grow', this).call(this);
+            //create new stem
+            var newStem = new (__webpack_require__(11).default)(this.plant, this.parent, { x: this.x, y: this.y, dir: this.dir });
+            //rearrange parents and children
+            this.parent.removeChild(this.id);
+            this.parent.children.push(newStem);
+            this.parent = newStem;
+            this.parent.children.push(this);
+            this.level++;
+            //alter self
+            this.y -= Math.floor(this.plant.segmentLength * Math.cos(Math.toRad(this.dir)));
+            this.x += Math.floor(this.plant.segmentLength * Math.sin(Math.toRad(this.dir)));
+            this.dir = this.dir + Math.span(-this.level, this.level);
+            //add a maristem?
+            if (Math.chance(0.1)) this.parent.children.push(new (__webpack_require__(10).default)(this.plant, this.parent, { x: this.x, y: this.y, dir: Math.chance(0.5) ? this.dir + 30 : this.dir - 30 }));
+        }
+    }]);
+
+    return Meristem;
+}(__webpack_require__(5).default);
+
+exports.default = Meristem;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Stem = function (_require$default) {
+    _inherits(Stem, _require$default);
+
+    function Stem(plant, source, props) {
+        _classCallCheck(this, Stem);
+
+        var _this = _possibleConstructorReturn(this, (Stem.__proto__ || Object.getPrototypeOf(Stem)).call(this, plant, source, props));
+
+        _this.type = "stem";
+        return _this;
+    }
+
+    return Stem;
+}(__webpack_require__(5).default);
+
+exports.default = Stem;
+
+/***/ }),
+/* 12 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Plant = function () {
+    function Plant(x, y) {
+        _classCallCheck(this, Plant);
+
+        this.availableId = 0;
+        this.segmentLength = 10;
+        this.x = x;
+        this.y = y;
+        this.seed = new (__webpack_require__(9).default)(this, null, { x: this.x, y: this.y, dir: 0 });
+    }
+
+    _createClass(Plant, [{
+        key: "grow",
+        value: function grow() {
+            this.seed.grow();
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var ctx = gameInfo.CANVAS.getContext("2d");
+            ctx.clearRect(0, 0, gameInfo.WIDTH, gameInfo.HEIGHT);
+            this.seed.render(ctx);
+        }
+    }]);
+
+    return Plant;
+}();
+
+exports.default = Plant;
 
 /***/ })
 /******/ ]);

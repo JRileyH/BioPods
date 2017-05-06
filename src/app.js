@@ -1,22 +1,22 @@
-require('./systems')
-require('./entities')
-require('./sprites')
+var Plant = require('./entities').default.Plant;
+var plant1 = new Plant(300,400);
 
-//var pod = Crafty.s("Pod").build();
-
-var vine = Crafty.s("Vine");
-
-window.test = function(){
-    console.log('Testing...');
-    vine.grow();
+window.grow = function(){
+    plant1.grow();
 }
-
-var audio =  {
-        "beep": ["beep.wav", "beep.mp3"],
-        "meep": ["meep.wav", "meep.mp3"],
-        "berp": ["berp.wav", "berp.mp3"]
-    }
-Crafty.paths({audio:"res/audio/", images:""})
-Crafty.load({audio, function(){
-
-}});
+window.render = function(){
+    plant1.render();
+}
+window.startGrowth = function(){
+    window.growLoop = setInterval(function(){
+        plant1.grow();
+    },1000)
+    window.renderLoop = setInterval(function(){
+        plant1.render();
+    },10)
+    
+}
+window.stopGrowth = function(){
+    if(!!window.growLoop)clearInterval(growLoop);
+    if(!!window.renderLoop)clearInterval(renderLoop);
+}

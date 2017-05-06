@@ -1,19 +1,20 @@
 <html>
 <head>
-    <script src="node_modules/craftyjs/dist/crafty.js"></script>
+    <script src="src/utils/math_poly.js"></script>
 </head>
 <body>
-    <div id="GameWindow" style="outline:1px solid black"></div>
+    <canvas id="GameWindow" width="700" height="450" style="outline:1px solid black"></canvas>
     <script>
          window.gameInfo = {
              WIDTH: 700,
-             TILE_WIDTH: 10,
              HEIGHT: 450,
-             TILE_HEIGHT: 10
+             CANVAS: document.getElementById("GameWindow")
          }
-        Crafty.init(gameInfo.WIDTH,gameInfo.HEIGHT, document.getElementById('GameWindow'));
     </script>
     <script src="dist/app.bundle.js"></script>
-    <button type="button" onclick="test()">Test</button>
+    <button type="button" onclick="grow()">Grow</button>
+    <button type="button" onclick="render()">Render</button>
+    <button type="button" onclick="startGrowth()">Start</button>
+    <button type="button" onclick="stopGrowth()">Stop</button>
 </body>
 </html>
