@@ -1,15 +1,19 @@
 <html>
 <head>
+    <title>Biopod</title>
     <script src="src/utils/math_poly.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <h1>Welcome to your Biopod</h1>
+    <p>Almost as fun as a real bonsai tree. Trim the branches by clicking and dragging across them.</p>
     <canvas id="GameWindow" width="700" height="450" style="outline:1px solid black"></canvas>
     <br>
     <button type="button" onclick="newPlant()">New</button>
     <button type="button" onclick="storeJson()">Store</button>
     <button type="button" onclick="loadJson()">Load</button>
+    <span>(Storage JSON is printed to console. No database yet!)</span>
     <hr>
     <button id="slowButton" type="button" onclick="slowGame()"><i class="fa fa-backward"></i></button>
     <button id="playButton" type="button" onclick="startGame()"><i class="fa fa-play"></i></button>
@@ -26,7 +30,7 @@
         CANVAS: document.getElementById("GameWindow"),
         RENDER_INT: 10,
         RENDER: function(){},
-        TICK_INT: 100,
+        TICK_INT: 1000,
         TICK: function(){}
     }
     $('#stopButton').hide();

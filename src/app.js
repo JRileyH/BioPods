@@ -36,6 +36,7 @@ window.loadJson = function(){
 }
 
 window.startGame = function(cb){
+    gameInfo.RUNNING = true;
     gameInfo.tickLoop = setInterval(function(){
         gameInfo.TICK();
     },Math.floor(gameInfo.TICK_INT/gameInfo.SPEED));
@@ -45,7 +46,9 @@ window.startGame = function(cb){
     $('#playButton').hide();
     $('#stopButton').show();
 }
+startGame();
 window.stopGame = function(cb){
+    gameInfo.RUNNING = false;
     if(!!gameInfo.tickLoop)clearInterval(gameInfo.tickLoop);
     if(!!gameInfo.renderLoop)clearInterval(gameInfo.renderLoop);
     $('#playButton').show();
@@ -53,6 +56,7 @@ window.stopGame = function(cb){
 }
 window.slowGame = function(){
     if(gameInfo.SPEED>0.25) {
+        console.log('wha')
         gameInfo.SPEED/=2;
         $('#speedModifier').text(gameInfo.SPEED+'x');
         if(gameInfo.RUNNING)startGame();
