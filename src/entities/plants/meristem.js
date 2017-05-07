@@ -2,6 +2,7 @@ export default class Meristem extends require('./part').default{
     constructor(plant, source, props) {
         super(plant, source, props);
         this.type="meristem";
+        this.plant.counts.meristem++;
         this._ctb=null;//stored chance to branch to save processing
     }
     _chanceToBranch(){

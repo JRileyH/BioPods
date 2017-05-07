@@ -2,24 +2,34 @@
 <head>
     <script src="src/utils/math_poly.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <canvas id="GameWindow" width="700" height="450" style="outline:1px solid black"></canvas>
-    <script>
-         window.gameInfo = {
-             WIDTH: 700,
-             HEIGHT: 450,
-             CANVAS: document.getElementById("GameWindow"),
-             RENDER_INT: 10,
-             RENDER: function(){},
-             TICK_INT: 100,
-             TICK: function(){}
-         }
-    </script>
-    <script src="dist/app.bundle.js"></script>
-    <button type="button" onclick="grow()">Grow</button>
-    <button type="button" onclick="render()">Render</button>
-    <button type="button" onclick="startGame()">Start</button>
-    <button type="button" onclick="stopGame()">Stop</button>
+    <br>
+    <button type="button" onclick="newPlant()">New</button>
+    <button type="button" onclick="storeJson()">Store</button>
+    <button type="button" onclick="loadJson()">Load</button>
+    <hr>
+    <button id="slowButton" type="button" onclick="slowGame()"><i class="fa fa-backward"></i></button>
+    <button id="playButton" type="button" onclick="startGame()"><i class="fa fa-play"></i></button>
+    <button id="stopButton" type="button" onclick="stopGame()"><i class="fa fa-pause"></i></button>
+    <button id="fastButton" type="button" onclick="speedGame()"><i class="fa fa-forward"></i></button>
+    <b id="speedModifier">1x</b>
 </body>
+<script>
+    window.gameInfo = {
+        RUNNING: false,
+        SPEED: 1,
+        WIDTH: 700,
+        HEIGHT: 450,
+        CANVAS: document.getElementById("GameWindow"),
+        RENDER_INT: 10,
+        RENDER: function(){},
+        TICK_INT: 100,
+        TICK: function(){}
+    }
+    $('#stopButton').hide();
+</script>
+<script src="dist/app.bundle.js"></script>
 </html>

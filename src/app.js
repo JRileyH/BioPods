@@ -2,7 +2,15 @@ var Plant = require('./entities').default.Plant;
 var ToolBox = require('./entities').default.ToolBox;
 var Geom = require('./geom').default;
 
-global.plant1 = new Plant(new Geom.Point(300,400));
+var plantProps1 = {
+    new: true,
+    segmentLength: 10,
+    growthRate: 0.03,
+    branchRate: 0.1,
+    pos: new Geom.Point(300,400)
+}
+global.plant1 = new Plant(plantProps1);
+
 var toolbox = new ToolBox();
 
 gameInfo.TICK = function(){
@@ -15,24 +23,45 @@ gameInfo.RENDER = function(){
     toolbox.render(ctx)
 }
 
-
-window.grow = function(){
-    plant1.grow();
+window.newPlant = function(){
+    global.plant1 = new Plant(plantProps1);
 }
-window.render = function(){
-    gameInfo.RENDER();
+window.storeJson = function(){
+    console.log(plant1.jsonify())
+}
+window.loadJson = function(){
+    $.getJSON('data/tree.json').then(function(props){
+        global.plant1 = new Plant(props);
+    });
 }
 
-window.startGame = function(){
+window.startGame = function(cb){
     gameInfo.tickLoop = setInterval(function(){
         gameInfo.TICK();
-    },gameInfo.TICK_INT);
+    },Math.floor(gameInfo.TICK_INT/gameInfo.SPEED));
     gameInfo.renderLoop = setInterval(function(){
         gameInfo.RENDER();
     },gameInfo.RENDER_INT);
-    
+    $('#playButton').hide();
+    $('#stopButton').show();
 }
-window.stopGame = function(){
+window.stopGame = function(cb){
     if(!!gameInfo.tickLoop)clearInterval(gameInfo.tickLoop);
     if(!!gameInfo.renderLoop)clearInterval(gameInfo.renderLoop);
+    $('#playButton').show();
+    $('#stopButton').hide();
+}
+window.slowGame = function(){
+    if(gameInfo.SPEED>0.25) {
+        gameInfo.SPEED/=2;
+        $('#speedModifier').text(gameInfo.SPEED+'x');
+        if(gameInfo.RUNNING)startGame();
+    }
+}
+window.speedGame = function(){
+    if(gameInfo.SPEED<4) {
+        gameInfo.SPEED*=2;
+        $('#speedModifier').text(gameInfo.SPEED+'x');
+        if(gameInfo.RUNNING)startGame();
+    }
 }

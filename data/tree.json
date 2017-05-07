@@ -1,0 +1,1935 @@
+{
+  "new": false,
+  "x": 300,
+  "y": 400,
+  "availableId": 242,
+  "segmentLength": 10,
+  "growthRate": 0.03,
+  "branchRate": 0.1,
+  "seed": {
+    "type": "seed",
+    "x": 300,
+    "y": 400,
+    "dir": 0,
+    "children": [
+      {
+        "type": "stem",
+        "x": 300,
+        "y": 390,
+        "dir": 0,
+        "children": [
+          {
+            "type": "stem",
+            "x": 300,
+            "y": 380,
+            "dir": 358,
+            "children": [
+              {
+                "type": "joint",
+                "x": 299,
+                "y": 371,
+                "dir": 0,
+                "children": [
+                  {
+                    "type": "stem",
+                    "x": 299,
+                    "y": 361,
+                    "dir": 1,
+                    "children": [
+                      {
+                        "type": "stem",
+                        "x": 299,
+                        "y": 352,
+                        "dir": 5,
+                        "children": [
+                          {
+                            "type": "stem",
+                            "x": 299,
+                            "y": 343,
+                            "dir": 8,
+                            "children": [
+                              {
+                                "type": "stem",
+                                "x": 300,
+                                "y": 334,
+                                "dir": 3,
+                                "children": [
+                                  {
+                                    "type": "stem",
+                                    "x": 300,
+                                    "y": 325,
+                                    "dir": 358,
+                                    "children": [
+                                      {
+                                        "type": "stem",
+                                        "x": 299,
+                                        "y": 316,
+                                        "dir": 358,
+                                        "children": [
+                                          {
+                                            "type": "stem",
+                                            "x": 298,
+                                            "y": 307,
+                                            "dir": 7,
+                                            "children": [
+                                              {
+                                                "type": "joint",
+                                                "x": 299,
+                                                "y": 298,
+                                                "dir": 358,
+                                                "children": [
+                                                  {
+                                                    "type": "stem",
+                                                    "x": 298,
+                                                    "y": 289,
+                                                    "dir": 10,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 299,
+                                                        "y": 280,
+                                                        "dir": 6,
+                                                        "children": [
+                                                          {
+                                                            "type": "stem",
+                                                            "x": 300,
+                                                            "y": 271,
+                                                            "dir": 13,
+                                                            "children": [
+                                                              {
+                                                                "type": "joint",
+                                                                "x": 302,
+                                                                "y": 262,
+                                                                "dir": 17,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 304,
+                                                                    "y": 253,
+                                                                    "dir": 29,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "stem",
+                                                                        "x": 308,
+                                                                        "y": 245,
+                                                                        "dir": 29,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 312,
+                                                                            "y": 237,
+                                                                            "dir": 44,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 318,
+                                                                                "y": 230,
+                                                                                "dir": 30,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 322,
+                                                                                    "y": 222,
+                                                                                    "dir": 31,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 327,
+                                                                                        "y": 214,
+                                                                                        "dir": 25,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "joint",
+                                                                                            "x": 331,
+                                                                                            "y": 205,
+                                                                                            "dir": 12,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 333,
+                                                                                                "y": 196,
+                                                                                                "dir": 11,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "stem",
+                                                                                                    "x": 334,
+                                                                                                    "y": 187,
+                                                                                                    "dir": 9,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 335,
+                                                                                                        "y": 178,
+                                                                                                        "dir": 3,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 335,
+                                                                                                            "y": 169,
+                                                                                                            "dir": 22,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 338,
+                                                                                                                "y": 160,
+                                                                                                                "dir": 18,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 341,
+                                                                                                                    "y": 151,
+                                                                                                                    "dir": 25,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "joint",
+                                                                                                                        "x": 345,
+                                                                                                                        "y": 142,
+                                                                                                                        "dir": 12,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "stem",
+                                                                                                                            "x": 347,
+                                                                                                                            "y": 133,
+                                                                                                                            "dir": 343,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "joint",
+                                                                                                                                "x": 344,
+                                                                                                                                "y": 124,
+                                                                                                                                "dir": 338,
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "type": "meristem",
+                                                                                                                                    "x": 340,
+                                                                                                                                    "y": 115,
+                                                                                                                                    "dir": 6,
+                                                                                                                                    "children": []
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 302,
+                                                                    "y": 252,
+                                                                    "dir": 47,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "stem",
+                                                                        "x": 309,
+                                                                        "y": 246,
+                                                                        "dir": 34,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 314,
+                                                                            "y": 238,
+                                                                            "dir": 45,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 321,
+                                                                                "y": 231,
+                                                                                "dir": 61,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 329,
+                                                                                    "y": 227,
+                                                                                    "dir": 41,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "joint",
+                                                                                        "x": 335,
+                                                                                        "y": 220,
+                                                                                        "dir": 58,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "stem",
+                                                                                            "x": 343,
+                                                                                            "y": 215,
+                                                                                            "dir": 75,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "joint",
+                                                                                                "x": 352,
+                                                                                                "y": 213,
+                                                                                                "dir": 65,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "stem",
+                                                                                                    "x": 361,
+                                                                                                    "y": 209,
+                                                                                                    "dir": 85,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 370,
+                                                                                                        "y": 209,
+                                                                                                        "dir": 93,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 379,
+                                                                                                            "y": 210,
+                                                                                                            "dir": 70,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 388,
+                                                                                                                "y": 207,
+                                                                                                                "dir": 58,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 396,
+                                                                                                                    "y": 202,
+                                                                                                                    "dir": 55,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "joint",
+                                                                                                                        "x": 404,
+                                                                                                                        "y": 197,
+                                                                                                                        "dir": 79,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "stem",
+                                                                                                                            "x": 413,
+                                                                                                                            "y": 196,
+                                                                                                                            "dir": 103,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "stem",
+                                                                                                                                "x": 422,
+                                                                                                                                "y": 199,
+                                                                                                                                "dir": 95,
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "type": "stem",
+                                                                                                                                    "x": 431,
+                                                                                                                                    "y": 200,
+                                                                                                                                    "dir": 107,
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "type": "meristem",
+                                                                                                                                        "x": 440,
+                                                                                                                                        "y": 203,
+                                                                                                                                        "dir": 75,
+                                                                                                                                        "children": []
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 302,
+                                                                    "y": 252,
+                                                                    "dir": 347,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "stem",
+                                                                        "x": 299,
+                                                                        "y": 243,
+                                                                        "dir": 2,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 299,
+                                                                            "y": 234,
+                                                                            "dir": 359,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 298,
+                                                                                "y": 225,
+                                                                                "dir": 350,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 296,
+                                                                                    "y": 216,
+                                                                                    "dir": 5,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "joint",
+                                                                                        "x": 296,
+                                                                                        "y": 207,
+                                                                                        "dir": 355,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "stem",
+                                                                                            "x": 295,
+                                                                                            "y": 198,
+                                                                                            "dir": 343,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 292,
+                                                                                                "y": 189,
+                                                                                                "dir": 352,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "joint",
+                                                                                                    "x": 290,
+                                                                                                    "y": 180,
+                                                                                                    "dir": 4,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 290,
+                                                                                                        "y": 171,
+                                                                                                        "dir": 345,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 287,
+                                                                                                            "y": 162,
+                                                                                                            "dir": 359,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "joint",
+                                                                                                                "x": 286,
+                                                                                                                "y": 153,
+                                                                                                                "dir": 10,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 287,
+                                                                                                                    "y": 144,
+                                                                                                                    "dir": 17,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "stem",
+                                                                                                                        "x": 289,
+                                                                                                                        "y": 135,
+                                                                                                                        "dir": 16,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "stem",
+                                                                                                                            "x": 291,
+                                                                                                                            "y": 126,
+                                                                                                                            "dir": 45,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "meristem",
+                                                                                                                                "x": 298,
+                                                                                                                                "y": 119,
+                                                                                                                                "dir": 416,
+                                                                                                                                "children": []
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "type": "stem",
+                                                    "x": 299,
+                                                    "y": 288,
+                                                    "dir": 328,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 293,
+                                                        "y": 280,
+                                                        "dir": 318,
+                                                        "children": [
+                                                          {
+                                                            "type": "stem",
+                                                            "x": 286,
+                                                            "y": 273,
+                                                            "dir": 307,
+                                                            "children": [
+                                                              {
+                                                                "type": "stem",
+                                                                "x": 278,
+                                                                "y": 267,
+                                                                "dir": 294,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "joint",
+                                                                    "x": 268,
+                                                                    "y": 263,
+                                                                    "dir": 290,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "stem",
+                                                                        "x": 258,
+                                                                        "y": 260,
+                                                                        "dir": 280,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 248,
+                                                                            "y": 259,
+                                                                            "dir": 296,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 239,
+                                                                                "y": 255,
+                                                                                "dir": 279,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 229,
+                                                                                    "y": 254,
+                                                                                    "dir": 272,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 219,
+                                                                                        "y": 254,
+                                                                                        "dir": 267,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "joint",
+                                                                                            "x": 209,
+                                                                                            "y": 255,
+                                                                                            "dir": 262,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 199,
+                                                                                                "y": 257,
+                                                                                                "dir": 278,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "stem",
+                                                                                                    "x": 189,
+                                                                                                    "y": 256,
+                                                                                                    "dir": 261,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "joint",
+                                                                                                        "x": 179,
+                                                                                                        "y": 258,
+                                                                                                        "dir": 271,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 169,
+                                                                                                            "y": 258,
+                                                                                                            "dir": 285,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 159,
+                                                                                                                "y": 256,
+                                                                                                                "dir": 297,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 150,
+                                                                                                                    "y": 252,
+                                                                                                                    "dir": 314,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "stem",
+                                                                                                                        "x": 142,
+                                                                                                                        "y": 246,
+                                                                                                                        "dir": 289,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "stem",
+                                                                                                                            "x": 132,
+                                                                                                                            "y": 243,
+                                                                                                                            "dir": 312,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "joint",
+                                                                                                                                "x": 124,
+                                                                                                                                "y": 237,
+                                                                                                                                "dir": 316,
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "type": "meristem",
+                                                                                                                                    "x": 117,
+                                                                                                                                    "y": 230,
+                                                                                                                                    "dir": 340,
+                                                                                                                                    "children": []
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "stem",
+                    "x": 299,
+                    "y": 361,
+                    "dir": 30,
+                    "children": [
+                      {
+                        "type": "joint",
+                        "x": 303,
+                        "y": 353,
+                        "dir": 31,
+                        "children": [
+                          {
+                            "type": "stem",
+                            "x": 308,
+                            "y": 345,
+                            "dir": 28,
+                            "children": [
+                              {
+                                "type": "stem",
+                                "x": 312,
+                                "y": 337,
+                                "dir": 35,
+                                "children": [
+                                  {
+                                    "type": "stem",
+                                    "x": 317,
+                                    "y": 329,
+                                    "dir": 40,
+                                    "children": [
+                                      {
+                                        "type": "joint",
+                                        "x": 323,
+                                        "y": 322,
+                                        "dir": 40,
+                                        "children": [
+                                          {
+                                            "type": "stem",
+                                            "x": 329,
+                                            "y": 315,
+                                            "dir": 49,
+                                            "children": [
+                                              {
+                                                "type": "joint",
+                                                "x": 336,
+                                                "y": 309,
+                                                "dir": 38,
+                                                "children": [
+                                                  {
+                                                    "type": "stem",
+                                                    "x": 342,
+                                                    "y": 302,
+                                                    "dir": 50,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 349,
+                                                        "y": 296,
+                                                        "dir": 46,
+                                                        "children": [
+                                                          {
+                                                            "type": "stem",
+                                                            "x": 356,
+                                                            "y": 290,
+                                                            "dir": 40,
+                                                            "children": [
+                                                              {
+                                                                "type": "stem",
+                                                                "x": 362,
+                                                                "y": 283,
+                                                                "dir": 48,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 369,
+                                                                    "y": 277,
+                                                                    "dir": 50,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "stem",
+                                                                        "x": 376,
+                                                                        "y": 271,
+                                                                        "dir": 37,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "joint",
+                                                                            "x": 382,
+                                                                            "y": 264,
+                                                                            "dir": 39,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 388,
+                                                                                "y": 257,
+                                                                                "dir": 39,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 394,
+                                                                                    "y": 250,
+                                                                                    "dir": 22,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 397,
+                                                                                        "y": 241,
+                                                                                        "dir": 36,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "stem",
+                                                                                            "x": 402,
+                                                                                            "y": 233,
+                                                                                            "dir": 33,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 407,
+                                                                                                "y": 225,
+                                                                                                "dir": 29,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "joint",
+                                                                                                    "x": 411,
+                                                                                                    "y": 217,
+                                                                                                    "dir": 48,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 418,
+                                                                                                        "y": 211,
+                                                                                                        "dir": 44,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 424,
+                                                                                                            "y": 204,
+                                                                                                            "dir": 18,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 427,
+                                                                                                                "y": 195,
+                                                                                                                "dir": 354,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "joint",
+                                                                                                                    "x": 425,
+                                                                                                                    "y": 186,
+                                                                                                                    "dir": 340,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "stem",
+                                                                                                                        "x": 421,
+                                                                                                                        "y": 177,
+                                                                                                                        "dir": 318,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "stem",
+                                                                                                                            "x": 414,
+                                                                                                                            "y": 170,
+                                                                                                                            "dir": 314,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "meristem",
+                                                                                                                                "x": 406,
+                                                                                                                                "y": 164,
+                                                                                                                                "dir": -20,
+                                                                                                                                "children": []
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "stem",
+                                            "x": 323,
+                                            "y": 312,
+                                            "dir": 70,
+                                            "children": [
+                                              {
+                                                "type": "stem",
+                                                "x": 332,
+                                                "y": 309,
+                                                "dir": 79,
+                                                "children": [
+                                                  {
+                                                    "type": "joint",
+                                                    "x": 341,
+                                                    "y": 308,
+                                                    "dir": 72,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 350,
+                                                        "y": 305,
+                                                        "dir": 63,
+                                                        "children": [
+                                                          {
+                                                            "type": "stem",
+                                                            "x": 358,
+                                                            "y": 301,
+                                                            "dir": 53,
+                                                            "children": [
+                                                              {
+                                                                "type": "stem",
+                                                                "x": 365,
+                                                                "y": 295,
+                                                                "dir": 50,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 372,
+                                                                    "y": 289,
+                                                                    "dir": 37,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "stem",
+                                                                        "x": 378,
+                                                                        "y": 282,
+                                                                        "dir": 38,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 384,
+                                                                            "y": 275,
+                                                                            "dir": 42,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "joint",
+                                                                                "x": 390,
+                                                                                "y": 268,
+                                                                                "dir": 53,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 397,
+                                                                                    "y": 262,
+                                                                                    "dir": 64,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 405,
+                                                                                        "y": 258,
+                                                                                        "dir": 74,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "joint",
+                                                                                            "x": 414,
+                                                                                            "y": 256,
+                                                                                            "dir": 94,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 423,
+                                                                                                "y": 257,
+                                                                                                "dir": 109,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "stem",
+                                                                                                    "x": 432,
+                                                                                                    "y": 261,
+                                                                                                    "dir": 88,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 441,
+                                                                                                        "y": 261,
+                                                                                                        "dir": 78,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 450,
+                                                                                                            "y": 259,
+                                                                                                            "dir": 78,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "joint",
+                                                                                                                "x": 459,
+                                                                                                                "y": 257,
+                                                                                                                "dir": 84,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 468,
+                                                                                                                    "y": 256,
+                                                                                                                    "dir": 107,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "joint",
+                                                                                                                        "x": 477,
+                                                                                                                        "y": 259,
+                                                                                                                        "dir": 104,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "stem",
+                                                                                                                            "x": 486,
+                                                                                                                            "y": 262,
+                                                                                                                            "dir": 130,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "stem",
+                                                                                                                                "x": 493,
+                                                                                                                                "y": 269,
+                                                                                                                                "dir": 114,
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "type": "meristem",
+                                                                                                                                    "x": 502,
+                                                                                                                                    "y": 274,
+                                                                                                                                    "dir": 117,
+                                                                                                                                    "children": []
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "stem",
+                            "x": 303,
+                            "y": 343,
+                            "dir": 61,
+                            "children": [
+                              {
+                                "type": "stem",
+                                "x": 311,
+                                "y": 339,
+                                "dir": 66,
+                                "children": [
+                                  {
+                                    "type": "stem",
+                                    "x": 320,
+                                    "y": 335,
+                                    "dir": 59,
+                                    "children": [
+                                      {
+                                        "type": "joint",
+                                        "x": 328,
+                                        "y": 330,
+                                        "dir": 50,
+                                        "children": [
+                                          {
+                                            "type": "stem",
+                                            "x": 335,
+                                            "y": 324,
+                                            "dir": 42,
+                                            "children": [
+                                              {
+                                                "type": "stem",
+                                                "x": 341,
+                                                "y": 317,
+                                                "dir": 32,
+                                                "children": [
+                                                  {
+                                                    "type": "joint",
+                                                    "x": 346,
+                                                    "y": 309,
+                                                    "dir": 26,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 350,
+                                                        "y": 301,
+                                                        "dir": 34,
+                                                        "children": [
+                                                          {
+                                                            "type": "stem",
+                                                            "x": 355,
+                                                            "y": 293,
+                                                            "dir": 36,
+                                                            "children": [
+                                                              {
+                                                                "type": "stem",
+                                                                "x": 360,
+                                                                "y": 285,
+                                                                "dir": 22,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 363,
+                                                                    "y": 276,
+                                                                    "dir": 38,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "stem",
+                                                                        "x": 369,
+                                                                        "y": 269,
+                                                                        "dir": 52,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "joint",
+                                                                            "x": 376,
+                                                                            "y": 263,
+                                                                            "dir": 45,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 383,
+                                                                                "y": 256,
+                                                                                "dir": 26,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "joint",
+                                                                                    "x": 387,
+                                                                                    "y": 248,
+                                                                                    "dir": 15,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 389,
+                                                                                        "y": 239,
+                                                                                        "dir": 36,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "stem",
+                                                                                            "x": 394,
+                                                                                            "y": 231,
+                                                                                            "dir": 26,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 398,
+                                                                                                "y": 223,
+                                                                                                "dir": 26,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "joint",
+                                                                                                    "x": 402,
+                                                                                                    "y": 215,
+                                                                                                    "dir": 3,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 402,
+                                                                                                        "y": 206,
+                                                                                                        "dir": 338,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 398,
+                                                                                                            "y": 197,
+                                                                                                            "dir": 3,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 398,
+                                                                                                                "y": 188,
+                                                                                                                "dir": 351,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 396,
+                                                                                                                    "y": 179,
+                                                                                                                    "dir": 343,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "stem",
+                                                                                                                        "x": 393,
+                                                                                                                        "y": 170,
+                                                                                                                        "dir": 337,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "joint",
+                                                                                                                            "x": 389,
+                                                                                                                            "y": 161,
+                                                                                                                            "dir": 359,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "stem",
+                                                                                                                                "x": 388,
+                                                                                                                                "y": 152,
+                                                                                                                                "dir": 343,
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "type": "stem",
+                                                                                                                                    "x": 385,
+                                                                                                                                    "y": 143,
+                                                                                                                                    "dir": 341,
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "type": "meristem",
+                                                                                                                                        "x": 381,
+                                                                                                                                        "y": 134,
+                                                                                                                                        "dir": -14,
+                                                                                                                                        "children": []
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "stem",
+                                            "x": 328,
+                                            "y": 320,
+                                            "dir": 20,
+                                            "children": [
+                                              {
+                                                "type": "stem",
+                                                "x": 331,
+                                                "y": 311,
+                                                "dir": 24,
+                                                "children": [
+                                                  {
+                                                    "type": "stem",
+                                                    "x": 335,
+                                                    "y": 302,
+                                                    "dir": 20,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 338,
+                                                        "y": 293,
+                                                        "dir": 29,
+                                                        "children": [
+                                                          {
+                                                            "type": "stem",
+                                                            "x": 342,
+                                                            "y": 285,
+                                                            "dir": 32,
+                                                            "children": [
+                                                              {
+                                                                "type": "stem",
+                                                                "x": 347,
+                                                                "y": 277,
+                                                                "dir": 39,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 353,
+                                                                    "y": 270,
+                                                                    "dir": 33,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "joint",
+                                                                        "x": 358,
+                                                                        "y": 262,
+                                                                        "dir": 46,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 365,
+                                                                            "y": 256,
+                                                                            "dir": 34,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "joint",
+                                                                                "x": 370,
+                                                                                "y": 248,
+                                                                                "dir": 34,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 375,
+                                                                                    "y": 240,
+                                                                                    "dir": 34,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 380,
+                                                                                        "y": 232,
+                                                                                        "dir": 34,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "stem",
+                                                                                            "x": 385,
+                                                                                            "y": 224,
+                                                                                            "dir": 32,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 390,
+                                                                                                "y": 216,
+                                                                                                "dir": 35,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "stem",
+                                                                                                    "x": 395,
+                                                                                                    "y": 208,
+                                                                                                    "dir": 37,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "joint",
+                                                                                                        "x": 401,
+                                                                                                        "y": 201,
+                                                                                                        "dir": 25,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 405,
+                                                                                                            "y": 192,
+                                                                                                            "dir": 1,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 405,
+                                                                                                                "y": 183,
+                                                                                                                "dir": 19,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 408,
+                                                                                                                    "y": 174,
+                                                                                                                    "dir": 46,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "stem",
+                                                                                                                        "x": 415,
+                                                                                                                        "y": 168,
+                                                                                                                        "dir": 66,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "joint",
+                                                                                                                            "x": 424,
+                                                                                                                            "y": 164,
+                                                                                                                            "dir": 91,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "stem",
+                                                                                                                                "x": 433,
+                                                                                                                                "y": 165,
+                                                                                                                                "dir": 96,
+                                                                                                                                "children": [
+                                                                                                                                  {
+                                                                                                                                    "type": "stem",
+                                                                                                                                    "x": 442,
+                                                                                                                                    "y": 167,
+                                                                                                                                    "dir": 86,
+                                                                                                                                    "children": [
+                                                                                                                                      {
+                                                                                                                                        "type": "meristem",
+                                                                                                                                        "x": 451,
+                                                                                                                                        "y": 167,
+                                                                                                                                        "dir": 53,
+                                                                                                                                        "children": []
+                                                                                                                                      }
+                                                                                                                                    ]
+                                                                                                                                  }
+                                                                                                                                ]
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "stem",
+                            "x": 303,
+                            "y": 343,
+                            "dir": 1,
+                            "children": [
+                              {
+                                "type": "stem",
+                                "x": 303,
+                                "y": 334,
+                                "dir": 358,
+                                "children": [
+                                  {
+                                    "type": "stem",
+                                    "x": 302,
+                                    "y": 325,
+                                    "dir": 353,
+                                    "children": [
+                                      {
+                                        "type": "joint",
+                                        "x": 300,
+                                        "y": 316,
+                                        "dir": 354,
+                                        "children": [
+                                          {
+                                            "type": "stem",
+                                            "x": 298,
+                                            "y": 307,
+                                            "dir": 1,
+                                            "children": [
+                                              {
+                                                "type": "stem",
+                                                "x": 298,
+                                                "y": 298,
+                                                "dir": 353,
+                                                "children": [
+                                                  {
+                                                    "type": "stem",
+                                                    "x": 296,
+                                                    "y": 289,
+                                                    "dir": 356,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 295,
+                                                        "y": 280,
+                                                        "dir": 359,
+                                                        "children": [
+                                                          {
+                                                            "type": "joint",
+                                                            "x": 294,
+                                                            "y": 271,
+                                                            "dir": 9,
+                                                            "children": [
+                                                              {
+                                                                "type": "stem",
+                                                                "x": 295,
+                                                                "y": 262,
+                                                                "dir": 13,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 297,
+                                                                    "y": 253,
+                                                                    "dir": 11,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "joint",
+                                                                        "x": 298,
+                                                                        "y": 244,
+                                                                        "dir": 8,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 299,
+                                                                            "y": 235,
+                                                                            "dir": 23,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 302,
+                                                                                "y": 226,
+                                                                                "dir": 17,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 304,
+                                                                                    "y": 217,
+                                                                                    "dir": 359,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 303,
+                                                                                        "y": 208,
+                                                                                        "dir": 13,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "stem",
+                                                                                            "x": 305,
+                                                                                            "y": 199,
+                                                                                            "dir": 35,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 310,
+                                                                                                "y": 191,
+                                                                                                "dir": 47,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "joint",
+                                                                                                    "x": 317,
+                                                                                                    "y": 185,
+                                                                                                    "dir": 62,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 325,
+                                                                                                        "y": 181,
+                                                                                                        "dir": 39,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "joint",
+                                                                                                            "x": 331,
+                                                                                                            "y": 174,
+                                                                                                            "dir": 49,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 338,
+                                                                                                                "y": 168,
+                                                                                                                "dir": 24,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 342,
+                                                                                                                    "y": 159,
+                                                                                                                    "dir": 14,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "stem",
+                                                                                                                        "x": 344,
+                                                                                                                        "y": 150,
+                                                                                                                        "dir": 24,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "meristem",
+                                                                                                                            "x": 348,
+                                                                                                                            "y": 141,
+                                                                                                                            "dir": 21,
+                                                                                                                            "children": []
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "stem",
+                            "x": 303,
+                            "y": 343,
+                            "dir": 1,
+                            "children": [
+                              {
+                                "type": "stem",
+                                "x": 303,
+                                "y": 334,
+                                "dir": 5,
+                                "children": [
+                                  {
+                                    "type": "stem",
+                                    "x": 303,
+                                    "y": 325,
+                                    "dir": 8,
+                                    "children": [
+                                      {
+                                        "type": "stem",
+                                        "x": 304,
+                                        "y": 316,
+                                        "dir": 359,
+                                        "children": [
+                                          {
+                                            "type": "joint",
+                                            "x": 303,
+                                            "y": 307,
+                                            "dir": 5,
+                                            "children": [
+                                              {
+                                                "type": "stem",
+                                                "x": 303,
+                                                "y": 298,
+                                                "dir": 355,
+                                                "children": [
+                                                  {
+                                                    "type": "stem",
+                                                    "x": 302,
+                                                    "y": 289,
+                                                    "dir": 358,
+                                                    "children": [
+                                                      {
+                                                        "type": "stem",
+                                                        "x": 301,
+                                                        "y": 280,
+                                                        "dir": 346,
+                                                        "children": [
+                                                          {
+                                                            "type": "joint",
+                                                            "x": 298,
+                                                            "y": 271,
+                                                            "dir": 354,
+                                                            "children": [
+                                                              {
+                                                                "type": "stem",
+                                                                "x": 296,
+                                                                "y": 262,
+                                                                "dir": 342,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "stem",
+                                                                    "x": 292,
+                                                                    "y": 253,
+                                                                    "dir": 327,
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "joint",
+                                                                        "x": 286,
+                                                                        "y": 245,
+                                                                        "dir": 334,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "stem",
+                                                                            "x": 281,
+                                                                            "y": 237,
+                                                                            "dir": 340,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "stem",
+                                                                                "x": 277,
+                                                                                "y": 228,
+                                                                                "dir": 323,
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "stem",
+                                                                                    "x": 270,
+                                                                                    "y": 221,
+                                                                                    "dir": 319,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "stem",
+                                                                                        "x": 263,
+                                                                                        "y": 214,
+                                                                                        "dir": 336,
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "joint",
+                                                                                            "x": 258,
+                                                                                            "y": 205,
+                                                                                            "dir": 336,
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "stem",
+                                                                                                "x": 253,
+                                                                                                "y": 196,
+                                                                                                "dir": 350,
+                                                                                                "children": [
+                                                                                                  {
+                                                                                                    "type": "joint",
+                                                                                                    "x": 251,
+                                                                                                    "y": 187,
+                                                                                                    "dir": 348,
+                                                                                                    "children": [
+                                                                                                      {
+                                                                                                        "type": "stem",
+                                                                                                        "x": 248,
+                                                                                                        "y": 178,
+                                                                                                        "dir": 349,
+                                                                                                        "children": [
+                                                                                                          {
+                                                                                                            "type": "stem",
+                                                                                                            "x": 246,
+                                                                                                            "y": 169,
+                                                                                                            "dir": 325,
+                                                                                                            "children": [
+                                                                                                              {
+                                                                                                                "type": "stem",
+                                                                                                                "x": 240,
+                                                                                                                "y": 161,
+                                                                                                                "dir": 320,
+                                                                                                                "children": [
+                                                                                                                  {
+                                                                                                                    "type": "stem",
+                                                                                                                    "x": 233,
+                                                                                                                    "y": 154,
+                                                                                                                    "dir": 295,
+                                                                                                                    "children": [
+                                                                                                                      {
+                                                                                                                        "type": "stem",
+                                                                                                                        "x": 223,
+                                                                                                                        "y": 150,
+                                                                                                                        "dir": 270,
+                                                                                                                        "children": [
+                                                                                                                          {
+                                                                                                                            "type": "stem",
+                                                                                                                            "x": 213,
+                                                                                                                            "y": 150,
+                                                                                                                            "dir": 298,
+                                                                                                                            "children": [
+                                                                                                                              {
+                                                                                                                                "type": "meristem",
+                                                                                                                                "x": 204,
+                                                                                                                                "y": 146,
+                                                                                                                                "dir": -86,
+                                                                                                                                "children": []
+                                                                                                                              }
+                                                                                                                            ]
+                                                                                                                          }
+                                                                                                                        ]
+                                                                                                                      }
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

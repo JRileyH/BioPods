@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,9 +77,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
-    Math: __webpack_require__(13).default,
-    Point: __webpack_require__(14).default,
-    Line: __webpack_require__(12).default
+    Math: __webpack_require__(14).default,
+    Point: __webpack_require__(15).default,
+    Line: __webpack_require__(13).default
 };
 
 /***/ }),
@@ -93,8 +93,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
-    Plant: __webpack_require__(6).default,
-    ToolBox: __webpack_require__(11).default
+    Plant: __webpack_require__(8).default,
+    ToolBox: __webpack_require__(12).default
 };
 
 /***/ }),
@@ -147,47 +147,130 @@ var PlantPart = function () {
             return clamped;
         }
     }, {
+        key: "traverse_bfs",
+        value: function traverse_bfs(callback) {
+            var queue = [this];
+            var n;
+            while (queue.length > 0) {
+                n = queue.shift();
+                callback(n);
+                if (!n.children.length) {
+                    continue;
+                }
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = n.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var child = _step.value;
+
+                        queue.push(child);
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+            }
+            return this;
+        }
+    }, {
+        key: "traverse_bfs_shuffle",
+        value: function traverse_bfs_shuffle(callback) {
+            var queue = [this];
+            var n;
+            while (queue.length > 0) {
+                n = queue.shift();
+                callback(n);
+                if (!n.children.length) {
+                    continue;
+                }
+                var _iteratorNormalCompletion2 = true;
+                var _didIteratorError2 = false;
+                var _iteratorError2 = undefined;
+
+                try {
+                    for (var _iterator2 = n.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                        var child = _step2.value;
+
+                        queue.push(child);
+                    }
+                } catch (err) {
+                    _didIteratorError2 = true;
+                    _iteratorError2 = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                            _iterator2.return();
+                        }
+                    } finally {
+                        if (_didIteratorError2) {
+                            throw _iteratorError2;
+                        }
+                    }
+                }
+            }
+            return this;
+        }
+    }, {
         key: "destroyChild",
         value: function destroyChild(id) {
             this.children = this.children.filter(function (x) {
                 return x.id != id;
             });
+
             return this;
         }
     }, {
         key: "destroy",
         value: function destroy() {
+            var _this = this;
+
             if (this.id === 0) {
                 return this; //this is root
             } else {
                 this.parent.destroyChild(this.id);
+                //reestablish tree stats
+                this.traverse_bfs(function (n) {
+                    _this.plant.counts[n.type]--;
+                });
                 return this.parent;
             }
         }
     }, {
         key: "grow",
         value: function grow() {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
 
             try {
-                for (var _iterator = this.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
+                for (var _iterator3 = this.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var child = _step3.value;
 
                     child.grow();
                 }
             } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
                     }
                 } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
                     }
                 }
             }
@@ -197,27 +280,27 @@ var PlantPart = function () {
     }, {
         key: "render",
         value: function render(ctx) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator2 = this.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
+                for (var _iterator4 = this.children[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var child = _step4.value;
 
                     child.render(ctx);
                 }
             } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
                     }
                 } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
                     }
                 }
             }
@@ -233,78 +316,6 @@ exports.default = PlantPart;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-var Plant = __webpack_require__(1).default.Plant;
-var ToolBox = __webpack_require__(1).default.ToolBox;
-var Geom = __webpack_require__(0).default;
-
-global.plant1 = new Plant(new Geom.Point(300, 400));
-var toolbox = new ToolBox();
-
-gameInfo.TICK = function () {
-    plant1.grow();
-};
-gameInfo.RENDER = function () {
-    var ctx = gameInfo.CANVAS.getContext("2d");
-    ctx.clearRect(0, 0, gameInfo.WIDTH, gameInfo.HEIGHT);
-    plant1.render(ctx);
-    toolbox.render(ctx);
-};
-
-window.grow = function () {
-    plant1.grow();
-};
-window.render = function () {
-    gameInfo.RENDER();
-};
-
-window.startGame = function () {
-    gameInfo.tickLoop = setInterval(function () {
-        gameInfo.TICK();
-    }, gameInfo.TICK_INT);
-    gameInfo.renderLoop = setInterval(function () {
-        gameInfo.RENDER();
-    }, gameInfo.RENDER_INT);
-};
-window.stopGame = function () {
-    if (!!gameInfo.tickLoop) clearInterval(gameInfo.tickLoop);
-    if (!!gameInfo.renderLoop) clearInterval(gameInfo.renderLoop);
-};
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -333,6 +344,7 @@ var Meristem = function (_require$default) {
         var _this = _possibleConstructorReturn(this, (Meristem.__proto__ || Object.getPrototypeOf(Meristem)).call(this, plant, source, props));
 
         _this.type = "meristem";
+        _this.plant.counts.meristem++;
         _this._ctb = null; //stored chance to branch to save processing
         return _this;
     }
@@ -357,7 +369,7 @@ var Meristem = function (_require$default) {
             if (Math.chance(1 - this.plant.growthRate * this.level)) {
                 this._ctb = null;
                 //create new stem or joint
-                var newStem = Math.chance(this._chanceToBranch()) ? new (__webpack_require__(15).default)(this.plant, this.parent, { pos: this.pos.copy(), dir: this.dir }) : new (__webpack_require__(8).default)(this.plant, this.parent, { pos: this.pos.copy(), dir: this.dir });
+                var newStem = Math.chance(this._chanceToBranch()) ? new (__webpack_require__(7).default)(this.plant, this.parent, { pos: this.pos.copy(), dir: this.dir }) : new (__webpack_require__(4).default)(this.plant, this.parent, { pos: this.pos.copy(), dir: this.dir });
                 //rearrange parents and children
                 this.parent.destroyChild(this.id);
                 this.parent.children.push(newStem);
@@ -377,98 +389,7 @@ var Meristem = function (_require$default) {
 exports.default = Meristem;
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Plant = function () {
-    function Plant(pos) {
-        _classCallCheck(this, Plant);
-
-        this.availableId = 0;
-        this.segmentLength = 20;
-        this.growthRate = 0.03; //higher is less growth
-        this.branchRate = 0.1;
-        this.pos = pos;
-        this.seed = new (__webpack_require__(7).default)(this, null, { pos: this.pos.copy(), dir: 0 });
-    }
-
-    _createClass(Plant, [{
-        key: 'grow',
-        value: function grow() {
-            this.seed.grow();
-        }
-    }, {
-        key: 'render',
-        value: function render(ctx) {
-            this.seed.render(ctx);
-        }
-    }]);
-
-    return Plant;
-}();
-
-exports.default = Plant;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Seed = function (_require$default) {
-    _inherits(Seed, _require$default);
-
-    function Seed(plant, source, props) {
-        _classCallCheck(this, Seed);
-
-        var _this = _possibleConstructorReturn(this, (Seed.__proto__ || Object.getPrototypeOf(Seed)).call(this, plant, source, props));
-
-        _this.type = "seed";
-        _this.children.push(new (__webpack_require__(5).default)(_this.plant, _this, { pos: _this.pos.copy(0, -_this.plant.segmentLength), dir: 0 }));
-        return _this;
-    }
-
-    _createClass(Seed, [{
-        key: 'render',
-        value: function render(ctx) {
-            _get(Seed.prototype.__proto__ || Object.getPrototypeOf(Seed.prototype), 'render', this).call(this, ctx);
-            this.pos.render(ctx);
-        }
-    }]);
-
-    return Seed;
-}(__webpack_require__(2).default);
-
-exports.default = Seed;
-
-/***/ }),
-/* 8 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -499,6 +420,7 @@ var Stem = function (_require$default) {
         var _this = _possibleConstructorReturn(this, (Stem.__proto__ || Object.getPrototypeOf(Stem)).call(this, plant, source, props));
 
         _this.type = "stem";
+        _this.plant.counts.stem++;
         _this.line = new Line(_this.parent.pos, _this.pos);
         return _this;
     }
@@ -517,7 +439,389 @@ var Stem = function (_require$default) {
 exports.default = Stem;
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+var Plant = __webpack_require__(1).default.Plant;
+var ToolBox = __webpack_require__(1).default.ToolBox;
+var Geom = __webpack_require__(0).default;
+
+var plantProps1 = {
+    new: true,
+    segmentLength: 10,
+    growthRate: 0.03,
+    branchRate: 0.1,
+    pos: new Geom.Point(300, 400)
+};
+global.plant1 = new Plant(plantProps1);
+
+var toolbox = new ToolBox();
+
+gameInfo.TICK = function () {
+    plant1.grow();
+};
+gameInfo.RENDER = function () {
+    var ctx = gameInfo.CANVAS.getContext("2d");
+    ctx.clearRect(0, 0, gameInfo.WIDTH, gameInfo.HEIGHT);
+    plant1.render(ctx);
+    toolbox.render(ctx);
+};
+
+window.newPlant = function () {
+    global.plant1 = new Plant(plantProps1);
+};
+window.storeJson = function () {
+    console.log(plant1.jsonify());
+};
+window.loadJson = function () {
+    $.getJSON('data/tree.json').then(function (props) {
+        global.plant1 = new Plant(props);
+    });
+};
+
+window.startGame = function (cb) {
+    gameInfo.tickLoop = setInterval(function () {
+        gameInfo.TICK();
+    }, Math.floor(gameInfo.TICK_INT / gameInfo.SPEED));
+    gameInfo.renderLoop = setInterval(function () {
+        gameInfo.RENDER();
+    }, gameInfo.RENDER_INT);
+    $('#playButton').hide();
+    $('#stopButton').show();
+};
+window.stopGame = function (cb) {
+    if (!!gameInfo.tickLoop) clearInterval(gameInfo.tickLoop);
+    if (!!gameInfo.renderLoop) clearInterval(gameInfo.renderLoop);
+    $('#playButton').show();
+    $('#stopButton').hide();
+};
+window.slowGame = function () {
+    if (gameInfo.SPEED > 0.25) {
+        gameInfo.SPEED /= 2;
+        $('#speedModifier').text(gameInfo.SPEED + 'x');
+        if (gameInfo.RUNNING) startGame();
+    }
+};
+window.speedGame = function () {
+    if (gameInfo.SPEED < 4) {
+        gameInfo.SPEED *= 2;
+        $('#speedModifier').text(gameInfo.SPEED + 'x');
+        if (gameInfo.RUNNING) startGame();
+    }
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Joint = function (_require$default) {
+    _inherits(Joint, _require$default);
+
+    function Joint(plant, source, props) {
+        _classCallCheck(this, Joint);
+
+        var _this = _possibleConstructorReturn(this, (Joint.__proto__ || Object.getPrototypeOf(Joint)).call(this, plant, source, props));
+
+        _this.type = "joint";
+        _this.plant.counts.joint++;
+        return _this;
+    }
+
+    _createClass(Joint, [{
+        key: "_chanceToBranch",
+        value: function _chanceToBranch() {
+            var closestMaristem = 999;
+            this.traverse_bfs(function (n) {
+                if (n.type === "meristem") {
+                    closestMaristem = Math.min(closestMaristem, n.level);
+                }
+            });
+            return Math.chance(0.01 * closestMaristem);
+        }
+    }, {
+        key: "grow",
+        value: function grow() {
+            _get(Joint.prototype.__proto__ || Object.getPrototypeOf(Joint.prototype), "grow", this).call(this);
+            if (this.plant.counts.meristem < 10 && this._chanceToBranch()) {
+                this.children.push(new (__webpack_require__(3).default)(this.plant, this, { pos: this.pos.copy(0, -this.plant.segmentLength), dir: Math.chance(0.5) ? this.dir + 30 : this.dir - 30 }));
+            }
+        }
+    }, {
+        key: "render",
+        value: function render(ctx) {
+            _get(Joint.prototype.__proto__ || Object.getPrototypeOf(Joint.prototype), "render", this).call(this, ctx);
+            if (this.children.length <= 1) this.pos.render(ctx);
+        }
+    }]);
+
+    return Joint;
+}(__webpack_require__(4).default);
+
+exports.default = Joint;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Point = __webpack_require__(0).default.Point;
+
+var Plant = function () {
+    function Plant(props) {
+        _classCallCheck(this, Plant);
+
+        this.availableId = 0;
+        this.segmentLength = props.segmentLength;
+        this.growthRate = props.growthRate;
+        this.branchRate = props.branchRate;
+        this.counts = { stem: 0, meristem: 0, joint: 0 };
+        if (props.new) {
+            this.pos = props.pos;
+            this.seed = new (__webpack_require__(9).default)(this, null, { pos: this.pos.copy(), dir: 0 });
+            this.seed.children.push(new (__webpack_require__(3).default)(this, this.seed, { pos: this.seed.pos.copy(0, -this.segmentLength), dir: 0 }));
+        } else {
+            this.pos = new Point(props.x, props.y);
+            this.seed = this._nodifyJson(props.seed, null);
+        }
+    }
+
+    _createClass(Plant, [{
+        key: '_nodifyJson',
+        value: function _nodifyJson(j, p) {
+            var node = new (__webpack_require__(16)("./" + j.type).default)(this, p, { pos: new Point(j.x, j.y), dir: j.dir });
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = j.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var c = _step.value;
+
+                    node.children.push(this._nodifyJson(c, node));
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            return node;
+        }
+    }, {
+        key: '_jsonifyNode',
+        value: function _jsonifyNode(n) {
+            var json = {
+                type: n.type,
+                x: n.pos.x,
+                y: n.pos.y,
+                dir: n.dir,
+                children: []
+            };
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = n.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var c = _step2.value;
+
+                    json.children.push(this._jsonifyNode(c));
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+
+            return json;
+        }
+    }, {
+        key: 'jsonify',
+        value: function jsonify() {
+            var plant = {
+                new: false,
+                x: this.pos.x,
+                y: this.pos.y,
+                availableId: this.availableId,
+                segmentLength: this.segmentLength,
+                growthRate: this.growthRate,
+                branchRate: this.branchRate,
+                seed: {
+                    type: "seed",
+                    x: this.seed.pos.x,
+                    y: this.seed.pos.y,
+                    dir: this.seed.dir,
+                    children: []
+                }
+            };
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = this.seed.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var n = _step3.value;
+
+                    plant.seed.children.push(this._jsonifyNode(n));
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
+                    }
+                }
+            }
+
+            return plant;
+        }
+    }, {
+        key: 'grow',
+        value: function grow() {
+            this.seed.grow();
+        }
+    }, {
+        key: 'render',
+        value: function render(ctx) {
+            this.seed.render(ctx);
+        }
+    }]);
+
+    return Plant;
+}();
+
+exports.default = Plant;
+
+/***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Seed = function (_require$default) {
+    _inherits(Seed, _require$default);
+
+    function Seed(plant, source, props) {
+        _classCallCheck(this, Seed);
+
+        var _this = _possibleConstructorReturn(this, (Seed.__proto__ || Object.getPrototypeOf(Seed)).call(this, plant, source, props));
+
+        _this.type = "seed";
+        return _this;
+    }
+
+    _createClass(Seed, [{
+        key: "render",
+        value: function render(ctx) {
+            _get(Seed.prototype.__proto__ || Object.getPrototypeOf(Seed.prototype), "render", this).call(this, ctx);
+            this.pos.render(ctx);
+        }
+    }]);
+
+    return Seed;
+}(__webpack_require__(2).default);
+
+exports.default = Seed;
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -622,12 +926,12 @@ var Pruner = function (_require$default) {
     }]);
 
     return Pruner;
-}(__webpack_require__(10).default);
+}(__webpack_require__(11).default);
 
 exports.default = Pruner;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -666,7 +970,7 @@ var Tool = function () {
 exports.default = Tool;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -684,7 +988,7 @@ var ToolBox = function () {
     function ToolBox() {
         _classCallCheck(this, ToolBox);
 
-        this.pruner = new (__webpack_require__(9).default)();
+        this.pruner = new (__webpack_require__(10).default)();
         this.clicked = false;
         this.select("pruner");
     }
@@ -724,7 +1028,7 @@ var ToolBox = function () {
 exports.default = ToolBox;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -780,7 +1084,7 @@ var Line = function () {
 exports.default = Line;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -792,7 +1096,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {};
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -849,97 +1153,38 @@ var Point = function () {
 exports.default = Point;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Joint = function (_require$default) {
-    _inherits(Joint, _require$default);
-
-    function Joint(plant, source, props) {
-        _classCallCheck(this, Joint);
-
-        var _this = _possibleConstructorReturn(this, (Joint.__proto__ || Object.getPrototypeOf(Joint)).call(this, plant, source, props));
-
-        _this.type = "joint";
-        return _this;
-    }
-
-    _createClass(Joint, [{
-        key: "_findClosestMeristem",
-        value: function _findClosestMeristem() {
-            var queue = [this];
-            var n;
-            var closest = 999;
-            while (queue.length > 0) {
-                n = queue.shift();
-                if (n.type = "meristem") {
-                    closest = Math.min(closest, n.level);
-                    continue;
-                }
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = n.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var child = _step.value;
-
-                        queue.push(child);
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-            }
-            return closest;
-        }
-    }, {
-        key: "grow",
-        value: function grow() {
-            _get(Joint.prototype.__proto__ || Object.getPrototypeOf(Joint.prototype), "grow", this).call(this);
-            if (Math.chance(0.01 * this._findClosestMeristem() / this.children.length)) {
-                this.children.push(new (__webpack_require__(5).default)(this.plant, this, { pos: this.pos.copy(0, -this.plant.segmentLength), dir: Math.chance(0.5) ? this.dir + 30 : this.dir - 30 }));
-            }
-        }
-    }, {
-        key: "render",
-        value: function render(ctx) {
-            _get(Joint.prototype.__proto__ || Object.getPrototypeOf(Joint.prototype), "render", this).call(this, ctx);
-            this.pos.render(ctx);
-        }
-    }]);
-
-    return Joint;
-}(__webpack_require__(8).default);
-
-exports.default = Joint;
+var map = {
+	"./joint": 7,
+	"./joint.js": 7,
+	"./meristem": 3,
+	"./meristem.js": 3,
+	"./part": 2,
+	"./part.js": 2,
+	"./plant": 8,
+	"./plant.js": 8,
+	"./seed": 9,
+	"./seed.js": 9,
+	"./stem": 4,
+	"./stem.js": 4
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 16;
 
 /***/ })
 /******/ ]);

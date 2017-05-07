@@ -21,8 +21,40 @@ export default class PlantPart {
         if(clamped < 0) clamped += 360;
         return clamped;
     }
+    traverse_bfs(callback){
+        var queue=[this];
+        var n;
+        while(queue.length>0) {
+            n = queue.shift();
+            callback(n);
+            if(!n.children.length){
+                continue;
+            }
+            for(let child of n.children){
+                queue.push(child);
+            }
+        }
+        return this;
+    }
+    traverse_bfs_shuffle(callback){
+        var queue=[this];
+        var n;
+        while(queue.length>0) {
+            n = queue.shift();
+            callback(n);
+            if(!n.children.length){
+                continue;
+            }
+            for(let child of n.children){
+                queue.push(child);
+            }
+        }
+        return this;
+    }
+
     destroyChild(id){
         this.children = this.children.filter(function(x){ return x.id != id; });
+
         return this;
     }
     destroy(){
@@ -30,6 +62,10 @@ export default class PlantPart {
             return this;//this is root
         } else {
             this.parent.destroyChild(this.id);
+            //reestablish tree stats
+            this.traverse_bfs(n=>{
+                this.plant.counts[n.type]--;
+            });
             return this.parent;
         }
     }
