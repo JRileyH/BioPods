@@ -4,7 +4,6 @@
   "description": "An idle farmsim expiriment",
   "main": "index.js",
   "dependencies": {
-    
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

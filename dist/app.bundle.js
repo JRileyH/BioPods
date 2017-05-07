@@ -409,8 +409,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Line = __webpack_require__(0).default.Line;
-
 var Stem = function (_require$default) {
     _inherits(Stem, _require$default);
 
@@ -421,20 +419,18 @@ var Stem = function (_require$default) {
 
         _this.type = "stem";
         _this.plant.counts.stem++;
-        _this.line = new Line(_this.parent.pos, _this.pos);
         return _this;
     }
 
     _createClass(Stem, [{
-        key: 'render',
+        key: "render",
         value: function render(ctx) {
-            _get(Stem.prototype.__proto__ || Object.getPrototypeOf(Stem.prototype), 'render', this).call(this, ctx);
-            this.line.render(ctx);
+            _get(Stem.prototype.__proto__ || Object.getPrototypeOf(Stem.prototype), "render", this).call(this, ctx);
         }
     }]);
 
     return Stem;
-}(__webpack_require__(2).default);
+}(__webpack_require__(18).default);
 
 exports.default = Stem;
 
@@ -478,6 +474,9 @@ var Geom = __webpack_require__(0).default;
 
 var plantProps1 = {
     new: true,
+    leafLength: 20,
+    leafSharpness: 2,
+    leafWidth: 40,
     segmentLength: 10,
     growthRate: 0.03,
     branchRate: 0.1,
@@ -576,11 +575,13 @@ var Joint = function (_require$default) {
 
         _this.type = "joint";
         _this.plant.counts.joint++;
+        var leafDir = Math.chance(0.5) ? _this.dir + 30 : _this.dir - 30;
+        _this.children.push(new (__webpack_require__(17).default)(_this.plant, _this, { pos: _this.pos.copy(Math.floor(_this.plant.segmentLength * Math.sin(Math.toRad(leafDir))), -Math.floor(_this.plant.segmentLength * Math.cos(Math.toRad(leafDir)))), dir: leafDir }));
         return _this;
     }
 
     _createClass(Joint, [{
-        key: "_chanceToBranch",
+        key: '_chanceToBranch',
         value: function _chanceToBranch() {
             var closestMaristem = 999;
             this.traverse_bfs(function (n) {
@@ -591,23 +592,42 @@ var Joint = function (_require$default) {
             return Math.chance(0.01 * closestMaristem);
         }
     }, {
-        key: "grow",
+        key: 'grow',
         value: function grow() {
-            _get(Joint.prototype.__proto__ || Object.getPrototypeOf(Joint.prototype), "grow", this).call(this);
+            _get(Joint.prototype.__proto__ || Object.getPrototypeOf(Joint.prototype), 'grow', this).call(this);
             if (this.plant.counts.meristem < 10 && this._chanceToBranch()) {
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = this.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var c = _step.value;
+
+                        if (c.type === "leaf") c.destroy();
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
                 this.children.push(new (__webpack_require__(3).default)(this.plant, this, { pos: this.pos.copy(0, -this.plant.segmentLength), dir: Math.chance(0.5) ? this.dir + 30 : this.dir - 30 }));
             }
-        }
-    }, {
-        key: "render",
-        value: function render(ctx) {
-            _get(Joint.prototype.__proto__ || Object.getPrototypeOf(Joint.prototype), "render", this).call(this, ctx);
-            if (this.children.length <= 1) this.pos.render(ctx);
         }
     }]);
 
     return Joint;
-}(__webpack_require__(4).default);
+}(__webpack_require__(18).default);
 
 exports.default = Joint;
 
@@ -634,9 +654,12 @@ var Plant = function () {
 
         this.availableId = 0;
         this.segmentLength = props.segmentLength;
+        this.leafLength = props.leafLength;
+        this.leafSharpness = props.leafSharpness;
+        this.leafWidth = props.leafWidth;
         this.growthRate = props.growthRate;
         this.branchRate = props.branchRate;
-        this.counts = { stem: 0, meristem: 0, joint: 0 };
+        this.counts = { stem: 0, meristem: 0, joint: 0, leaf: 0 };
         if (props.new) {
             this.pos = props.pos;
             this.seed = new (__webpack_require__(9).default)(this, null, { pos: this.pos.copy(), dir: 0 });
@@ -724,6 +747,9 @@ var Plant = function () {
                 y: this.pos.y,
                 availableId: this.availableId,
                 segmentLength: this.segmentLength,
+                leafLength: this.leafLength,
+                leafSharpness: this.leafSharpness,
+                leafWidth: this.leafWidth,
                 growthRate: this.growthRate,
                 branchRate: this.branchRate,
                 seed: {
@@ -1163,6 +1189,8 @@ exports.default = Point;
 var map = {
 	"./joint": 7,
 	"./joint.js": 7,
+	"./leaf": 17,
+	"./leaf.js": 17,
 	"./meristem": 3,
 	"./meristem.js": 3,
 	"./part": 2,
@@ -1171,6 +1199,8 @@ var map = {
 	"./plant.js": 8,
 	"./seed": 9,
 	"./seed.js": 9,
+	"./segment": 18,
+	"./segment.js": 18,
 	"./stem": 4,
 	"./stem.js": 4
 };
@@ -1189,6 +1219,119 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = 16;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Leaf = function (_require$default) {
+    _inherits(Leaf, _require$default);
+
+    function Leaf(plant, source, props) {
+        _classCallCheck(this, Leaf);
+
+        var _this = _possibleConstructorReturn(this, (Leaf.__proto__ || Object.getPrototypeOf(Leaf)).call(this, plant, source, props));
+
+        _this.type = "leaf";
+        _this.plant.counts.leaf++;
+        _this.tip = _this.pos.copy(Math.floor(_this.plant.leafLength * Math.sin(Math.toRad(_this.dir))), -Math.floor(_this.plant.leafLength * Math.cos(Math.toRad(_this.dir))));
+        _this.edge1 = _this.pos.copy(Math.floor(_this.plant.leafLength / _this.plant.leafSharpness * Math.sin(Math.toRad(_this.dir + _this.plant.leafWidth))), -Math.floor(_this.plant.leafLength / _this.plant.leafSharpness * Math.cos(Math.toRad(_this.dir + _this.plant.leafWidth))));
+        _this.edge2 = _this.pos.copy(Math.floor(_this.plant.leafLength / _this.plant.leafSharpness * Math.sin(Math.toRad(_this.dir - _this.plant.leafWidth))), -Math.floor(_this.plant.leafLength / _this.plant.leafSharpness * Math.cos(Math.toRad(_this.dir - _this.plant.leafWidth))));
+        return _this;
+    }
+
+    _createClass(Leaf, [{
+        key: "destroy",
+        value: function destroy() {
+            _get(Leaf.prototype.__proto__ || Object.getPrototypeOf(Leaf.prototype), "destroy", this).call(this);
+            //do some fall to earth animation?
+        }
+    }, {
+        key: "grow",
+        value: function grow() {
+            //do some photosynthesis!
+        }
+    }, {
+        key: "render",
+        value: function render(ctx) {
+            _get(Leaf.prototype.__proto__ || Object.getPrototypeOf(Leaf.prototype), "render", this).call(this, ctx);
+            ctx.beginPath();
+            ctx.moveTo(this.pos.x, this.pos.y);
+            ctx.quadraticCurveTo(this.edge1.x, this.edge1.y, this.tip.x, this.tip.y);
+            ctx.quadraticCurveTo(this.edge2.x, this.edge2.y, this.pos.x, this.pos.y);
+            ctx.stroke();
+        }
+    }]);
+
+    return Leaf;
+}(__webpack_require__(18).default);
+
+exports.default = Leaf;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Line = __webpack_require__(0).default.Line;
+
+var Segment = function (_require$default) {
+    _inherits(Segment, _require$default);
+
+    function Segment(plant, source, props) {
+        _classCallCheck(this, Segment);
+
+        var _this = _possibleConstructorReturn(this, (Segment.__proto__ || Object.getPrototypeOf(Segment)).call(this, plant, source, props));
+
+        _this.line = new Line(_this.parent.pos, _this.pos);
+        return _this;
+    }
+
+    _createClass(Segment, [{
+        key: 'render',
+        value: function render(ctx) {
+            _get(Segment.prototype.__proto__ || Object.getPrototypeOf(Segment.prototype), 'render', this).call(this, ctx);
+            this.line.render(ctx);
+        }
+    }]);
+
+    return Segment;
+}(__webpack_require__(2).default);
+
+exports.default = Segment;
 
 /***/ })
 /******/ ]);

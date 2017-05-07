@@ -4,9 +4,12 @@ export default class Plant {
     constructor(props) {
         this.availableId = 0;
         this.segmentLength = props.segmentLength;
+        this.leafLength = props.leafLength;
+        this.leafSharpness = props.leafSharpness;
+        this.leafWidth = props.leafWidth;
         this.growthRate = props.growthRate;
         this.branchRate = props.branchRate;
-        this.counts = {stem:0,meristem:0,joint:0}
+        this.counts = {stem:0,meristem:0,joint:0,leaf:0}
         if(props.new) {
             this.pos = props.pos;
             this.seed = new (require('./seed').default)(this, null, {pos:this.pos.copy(),dir:0});
@@ -43,6 +46,9 @@ export default class Plant {
             y: this.pos.y,
             availableId: this.availableId,
             segmentLength: this.segmentLength,
+            leafLength: this.leafLength,
+            leafSharpness: this.leafSharpness,
+            leafWidth: this.leafWidth,
             growthRate: this.growthRate,
             branchRate: this.branchRate,
             seed:{

@@ -4,6 +4,9 @@ var Geom = require('./geom').default;
 
 var plantProps1 = {
     new: true,
+    leafLength: 20,
+    leafSharpness: 2,
+    leafWidth:40,
     segmentLength: 10,
     growthRate: 0.03,
     branchRate: 0.1,
