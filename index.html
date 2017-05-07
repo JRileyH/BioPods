@@ -1,6 +1,7 @@
 <html>
 <head>
     <script src="src/utils/math_poly.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <canvas id="GameWindow" width="700" height="450" style="outline:1px solid black"></canvas>
@@ -8,13 +9,17 @@
          window.gameInfo = {
              WIDTH: 700,
              HEIGHT: 450,
-             CANVAS: document.getElementById("GameWindow")
+             CANVAS: document.getElementById("GameWindow"),
+             RENDER_INT: 10,
+             RENDER: function(){},
+             TICK_INT: 100,
+             TICK: function(){}
          }
     </script>
     <script src="dist/app.bundle.js"></script>
     <button type="button" onclick="grow()">Grow</button>
     <button type="button" onclick="render()">Render</button>
-    <button type="button" onclick="startGrowth()">Start</button>
-    <button type="button" onclick="stopGrowth()">Stop</button>
+    <button type="button" onclick="startGame()">Start</button>
+    <button type="button" onclick="stopGame()">Stop</button>
 </body>
 </html>

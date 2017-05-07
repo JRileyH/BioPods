@@ -7,15 +7,13 @@ export default class PlantPart {
         this.children = [];
         this.level = !!source ? source.level+1 : 0;
         if(this._verifyProps(props)) {
-            this.x = props.x;
-            this.y = props.y;
+            this.pos = props.pos;
             this.dir = this._clampDir(props.dir);
         }
     }
     _verifyProps(props) {
-        if(!props.hasOwnProperty('x')) {console.error("MISSING PROPS.X"); return false;}
-        if(!props.hasOwnProperty('y')) {console.error("MISSING PROPS.Y"); return false;}
-        if(!props.hasOwnProperty('dir')) {console.error("sMISSING PROPS.DIR"); return false;}
+        if(!props.hasOwnProperty('pos')&&props.pos.geom==="point") {console.error("MISSING PROPS.POS"); return false;}
+        if(!props.hasOwnProperty('dir')) {console.error("MISSING PROPS.DIR"); return false;}
         return true;
     }
     _clampDir(dir){
@@ -23,8 +21,16 @@ export default class PlantPart {
         if(clamped < 0) clamped += 360;
         return clamped;
     }
-    removeChild(id){
+    destroyChild(id){
         this.children = this.children.filter(function(x){ return x.id != id; });
+    }
+    destroy(){
+        if(this.id===0){
+            return this;//this is root
+        } else {
+            this.parent.destroyChild(this.id);
+            return this.parent;
+        }
     }
     grow(){
         for(let child of this.children) {
@@ -34,12 +40,6 @@ export default class PlantPart {
     render(ctx){
         for(let child of this.children) {
             child.render(ctx);
-        }
-        if(!!this.parent){
-            ctx.beginPath();
-            ctx.moveTo(this.parent.x,this.parent.y)
-            ctx.lineTo(this.x,this.y);
-            ctx.stroke();
         }
     }
 }

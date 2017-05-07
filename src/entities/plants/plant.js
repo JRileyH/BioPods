@@ -1,17 +1,14 @@
 export default class Plant {
-    constructor(x, y) {
+    constructor(pos) {
         this.availableId = 0;
         this.segmentLength = 10;
-        this.x=x;
-        this.y=y;
-        this.seed = new (require('./seed').default)(this, null, {x:this.x,y:this.y,dir:0});
+        this.pos = pos;
+        this.seed = new (require('./seed').default)(this, null, {pos:this.pos.copy(),dir:0});
     }
     grow(){
         this.seed.grow();
     }
-    render(){
-        var ctx = gameInfo.CANVAS.getContext("2d");
-        ctx.clearRect(0,0,gameInfo.WIDTH,gameInfo.HEIGHT);
+    render(ctx){
         this.seed.render(ctx);
     }
 }

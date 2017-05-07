@@ -1,22 +1,38 @@
 var Plant = require('./entities').default.Plant;
-var plant1 = new Plant(300,400);
+var ToolBox = require('./entities').default.ToolBox;
+var Geom = require('./geom').default;
+
+global.plant1 = new Plant(new Geom.Point(300,400));
+var toolbox = new ToolBox();
+
+gameInfo.TICK = function(){
+    plant1.grow();
+}
+gameInfo.RENDER = function(){
+    var ctx = gameInfo.CANVAS.getContext("2d");
+    ctx.clearRect(0,0,gameInfo.WIDTH,gameInfo.HEIGHT);
+    plant1.render(ctx);
+    toolbox.render(ctx)
+}
+
 
 window.grow = function(){
     plant1.grow();
 }
 window.render = function(){
-    plant1.render();
+    gameInfo.RENDER();
 }
-window.startGrowth = function(){
-    window.growLoop = setInterval(function(){
-        plant1.grow();
-    },1000)
-    window.renderLoop = setInterval(function(){
-        plant1.render();
-    },10)
+
+window.startGame = function(){
+    gameInfo.tickLoop = setInterval(function(){
+        gameInfo.TICK();
+    },gameInfo.TICK_INT);
+    gameInfo.renderLoop = setInterval(function(){
+        gameInfo.RENDER();
+    },gameInfo.RENDER_INT);
     
 }
-window.stopGrowth = function(){
-    if(!!window.growLoop)clearInterval(growLoop);
-    if(!!window.renderLoop)clearInterval(renderLoop);
+window.stopGame = function(){
+    if(!!gameInfo.tickLoop)clearInterval(gameInfo.tickLoop);
+    if(!!gameInfo.renderLoop)clearInterval(gameInfo.renderLoop);
 }
