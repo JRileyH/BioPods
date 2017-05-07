@@ -23,6 +23,7 @@ export default class PlantPart {
     }
     destroyChild(id){
         this.children = this.children.filter(function(x){ return x.id != id; });
+        return this;
     }
     destroy(){
         if(this.id===0){
@@ -36,10 +37,12 @@ export default class PlantPart {
         for(let child of this.children) {
             child.grow();
         }
+        return this;
     }
     render(ctx){
         for(let child of this.children) {
             child.render(ctx);
         }
+        return this;
     }
 }
