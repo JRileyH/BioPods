@@ -18,6 +18,8 @@ export default class Pruner extends require('./tool').default{
         //find and cut a branch
         this.line.p2.move(event.layerX, event.layerY);
         this.searchSegments(plant1.seed);
+        this.searchSegments(plant2.seed);
+        this.searchSegments(plant3.seed);
         this.active = false;
     }
     mousedrag(event){
@@ -33,7 +35,6 @@ export default class Pruner extends require('./tool').default{
             if(segment.type==="stem"){
                 if(this.line.intersects(segment.line)){
                     segment.destroy();
-                    plant1.reset();
                 }
             }
             this.searchSegments(segment);

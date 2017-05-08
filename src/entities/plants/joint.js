@@ -20,7 +20,7 @@ export default class Joint extends require('./segment').default{
     }
     grow(){
         super.grow();
-        if(this.plant.counts.meristem<10 && this._chanceToBranch()){
+        if(this.plant.counts.meristem<this.plant.maxMeristem && this._chanceToBranch()){
             for(let c of this.children){
                 if(c.type==="leaf") c.destroy();
             }

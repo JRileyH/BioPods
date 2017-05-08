@@ -11,6 +11,7 @@ export default class Plant {
         this.trunkWidth = props.trunkWidth;
         this.growthRate = props.growthRate;
         this.branchRate = props.branchRate;
+        this.maxMeristem = props.maxMeristem;
         this.counts = {stem:0,meristem:0,joint:0,leaf:0}
         if(props.new) {
             this.pos = props.pos;
@@ -55,6 +56,7 @@ export default class Plant {
             trunkWidth: this.trunkWidth,
             growthRate: this.growthRate,
             branchRate: this.branchRate,
+            maxMeristem: this.maxMeristem,
             seed:{
                 type:"seed",
                 x: this.seed.pos.x,

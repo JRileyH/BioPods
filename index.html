@@ -7,24 +7,25 @@
     <h1>Welcome to your Biopod</h1>
     <p>Almost as fun as a real bonsai tree. Trim the branches by clicking and dragging across them.</p>
     <p>This is made entirely from vanilla javascript and html5. Don't ask me why... Maybe I like a challenge.</p>
-    <canvas id="GameWindow" width="700" height="450" style="outline:1px solid black"></canvas>
+    <canvas id="GameWindow" width="1500" height="450" style="outline:1px solid black"></canvas>
     <br>
     <button type="button" onclick="newPlant()">New</button>
     <button type="button" onclick="storeJson()">Store</button>
     <button type="button" onclick="loadJson()">Load</button>
+    <span>(Only applies to first tree at the moment)</span>
 </body>
 <script>
     window.gameInfo = {
         RUNNING: false,
         SPEED: 1,
-        WIDTH: 700,
+        WIDTH: 1500,
         HEIGHT: 450,
         CANVAS: document.getElementById("GameWindow"),
         RENDER_INT: 10,
         RENDER: function(){},
         FAST_TICK_INT: 50,
         FAST_TICK: function(){},
-        TICK_INT: 1000,
+        TICK_INT: 10000,
         TICK: function(){},
         GRAVITY:3
     }
