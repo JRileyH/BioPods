@@ -3,8 +3,4 @@ export default class Seed extends require('./part').default {
         super(plant, source, props);
         this.type="seed";
     }
-    render(ctx){
-        super.render(ctx);
-        this.pos.render(ctx);
-    }
 }

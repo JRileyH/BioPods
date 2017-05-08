@@ -24,6 +24,8 @@ gameInfo.TICK = function(){
 gameInfo.RENDER = function(){
     var ctx = gameInfo.CANVAS.getContext("2d");
     ctx.clearRect(0,0,gameInfo.WIDTH,gameInfo.HEIGHT);
+    ctx.fillStyle="#af8e2f";
+    ctx.fillRect(0,400,700,150)
     plant1.render(ctx);
     toolbox.render(ctx)
 }

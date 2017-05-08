@@ -33,7 +33,7 @@ export default class Pruner extends require('./tool').default{
             if(segment.type==="stem"){
                 if(this.line.intersects(segment.line)){
                     segment.destroy();
-                    return;
+                    plant1.reset();
                 }
             }
             this.searchSegments(segment);
