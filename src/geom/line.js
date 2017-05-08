@@ -17,10 +17,14 @@ export default class Line {
         var t = ( s2_x * (this.p1.y - other.p1.y) - s2_y * (this.p1.x - other.p1.x)) / (-s2_x * s1_y + s1_x * s2_y);
         return s >= 0 && s <= 1 && t >= 0 && t <= 1;
     }
-    render(ctx){
+    render(ctx, color, width){
         ctx.beginPath();
         ctx.moveTo(this.p1.x,this.p1.y);
         ctx.lineTo(this.p2.x,this.p2.y);
+        ctx.strokeStyle = color || "#000000"
+        ctx.lineWidth = width || 1;
         ctx.stroke();
+        ctx.strokeStyle = "#000000";
+        ctx.lineWidth = 1;
     }
 }

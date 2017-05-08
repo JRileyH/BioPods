@@ -3,10 +3,12 @@ var Point = require('../../geom').default.Point;
 export default class Plant {
     constructor(props) {
         this.availableId = 0;
+        this.maxLevel = 1;
         this.segmentLength = props.segmentLength;
         this.leafLength = props.leafLength;
         this.leafSharpness = props.leafSharpness;
         this.leafWidth = props.leafWidth;
+        this.trunkWidth = props.trunkWidth;
         this.growthRate = props.growthRate;
         this.branchRate = props.branchRate;
         this.counts = {stem:0,meristem:0,joint:0,leaf:0}
@@ -45,10 +47,12 @@ export default class Plant {
             x: this.pos.x,
             y: this.pos.y,
             availableId: this.availableId,
+            maxLevel: this.maxLevel,
             segmentLength: this.segmentLength,
             leafLength: this.leafLength,
             leafSharpness: this.leafSharpness,
             leafWidth: this.leafWidth,
+            trunkWidth: this.trunkWidth,
             growthRate: this.growthRate,
             branchRate: this.branchRate,
             seed:{

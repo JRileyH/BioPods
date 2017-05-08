@@ -1,3 +1,4 @@
+const BabiliPlugin = require("babili-webpack-plugin");
 module.exports = {
      entry: './src/app.js',
      output: {
@@ -12,7 +13,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                    presets: ['es2015']
+                    presets: ['es2015','babili']
                     }
                 }
             }

@@ -1,3 +1,4 @@
+require('./utils/math_poly');
 var Plant = require('./entities').default.Plant;
 var ToolBox = require('./entities').default.ToolBox;
 var Geom = require('./geom').default;
@@ -8,6 +9,7 @@ var plantProps1 = {
     leafSharpness: 2,
     leafWidth:40,
     segmentLength: 10,
+    trunkWidth: 10,
     growthRate: 0.03,
     branchRate: 0.1,
     pos: new Geom.Point(300,400)
@@ -30,12 +32,15 @@ window.newPlant = function(){
     global.plant1 = new Plant(plantProps1);
 }
 window.storeJson = function(){
-    console.log(plant1.jsonify())
+    localStorage.setItem("plant", JSON.stringify(plant1.jsonify()));
 }
 window.loadJson = function(){
-    $.getJSON('data/tree.json').then(function(props){
-        global.plant1 = new Plant(props);
-    });
+    var pulled = JSON.parse(localStorage.getItem("plant"));
+    if(pulled){
+        global.plant1 = new Plant(pulled);
+    }else{
+        alert("No plant stored");
+    }
 }
 
 window.startGame = function(cb){
@@ -46,29 +51,10 @@ window.startGame = function(cb){
     gameInfo.renderLoop = setInterval(function(){
         gameInfo.RENDER();
     },gameInfo.RENDER_INT);
-    $('#playButton').hide();
-    $('#stopButton').show();
 }
 startGame();
 window.stopGame = function(cb){
     gameInfo.RUNNING = false;
     if(!!gameInfo.tickLoop)clearInterval(gameInfo.tickLoop);
     if(!!gameInfo.renderLoop)clearInterval(gameInfo.renderLoop);
-    $('#playButton').show();
-    $('#stopButton').hide();
-}
-window.slowGame = function(){
-    if(gameInfo.SPEED>0.25) {
-        console.log('wha')
-        gameInfo.SPEED/=2;
-        $('#speedModifier').text(gameInfo.SPEED+'x');
-        if(gameInfo.RUNNING)startGame();
-    }
-}
-window.speedGame = function(){
-    if(gameInfo.SPEED<4) {
-        gameInfo.SPEED*=2;
-        $('#speedModifier').text(gameInfo.SPEED+'x');
-        if(gameInfo.RUNNING)startGame();
-    }
 }

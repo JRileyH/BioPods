@@ -19,7 +19,9 @@ export default class Point {
         this.y+=y;
         return this;
     }
-    render(ctx){
+    render(ctx, color){
+        ctx.fillStyle = color || "#000000";
         ctx.fillRect(this.x-2,this.y-2,4,4);
+        ctx.fillStyle = "#000000";
     }
 }

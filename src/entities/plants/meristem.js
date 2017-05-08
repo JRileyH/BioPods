@@ -30,6 +30,7 @@ export default class Meristem extends require('./part').default{
             this.parent = newStem;
             this.parent.children.push(this);
             this.level++;
+            if(this.level>this.plant.maxLevel)this.plant.maxLevel = this.level;
             //alter self
             this.pos.slide(
                 Math.floor(this.plant.segmentLength*Math.sin(Math.toRad(this.dir))),

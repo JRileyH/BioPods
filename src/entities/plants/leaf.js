@@ -29,6 +29,8 @@ export default class Leaf extends require('./segment').default{
         ctx.moveTo(this.pos.x, this.pos.y);
         ctx.quadraticCurveTo(this.edge1.x, this.edge1.y, this.tip.x, this.tip.y);
         ctx.quadraticCurveTo(this.edge2.x, this.edge2.y, this.pos.x, this.pos.y);
-        ctx.stroke();
+        ctx.fillStyle = "#1fa339"
+        ctx.fill();
+        ctx.fillStyle = "#000000"
     }
 }
