@@ -66,18 +66,62 @@ gameInfo.RENDER = function(){
     toolbox.render(ctx)
 }
 
-window.newPlant = function(){
-    global.plant1 = new Plant(plantProps1);
+window.newPlant = function(n){
+    var newProps = {
+        new: true,
+        leafLength: parseInt(document.getElementById('leafLength'+n).value),
+        leafSharpness: parseInt(document.getElementById('leafSharpness'+n).value),
+        leafWidth: parseInt(document.getElementById('leafWidth'+n).value),
+        segmentLength: parseInt(document.getElementById('segmentLength'+n).value),
+        trunkWidth: parseInt(document.getElementById('trunkWidth'+n).value),
+        growthRate: parseFloat(document.getElementById('growthRate'+n).value),
+        branchRate: parseFloat(document.getElementById('branchRate'+n).value),
+        maxMeristem: parseInt(document.getElementById('maxMeristem'+n).value),
+    }
+    switch(n){
+        case 1:
+            newProps.pos = new Geom.Point(250,400);
+            global.plant1 = new Plant(newProps);
+        break;
+        case 2:
+            newProps.pos = new Geom.Point(700,400);
+            global.plant2 = new Plant(newProps);
+        break;
+        case 3:
+            newProps.pos = new Geom.Point(1250,400);
+            global.plant3 = new Plant(newProps);
+        break;
+    }
 }
-window.storeJson = function(){
-    localStorage.setItem("plant", JSON.stringify(plant1.jsonify()));
+window.storeJson = function(n){
+    switch(n){
+        case 1:
+            localStorage.setItem("plant"+n, JSON.stringify(plant1.jsonify()));
+        break;
+        case 2:
+            localStorage.setItem("plant"+n, JSON.stringify(plant2.jsonify()));
+        break;
+        case 3:
+            localStorage.setItem("plant"+n, JSON.stringify(plant3.jsonify()));
+        break;
+    }
 }
-window.loadJson = function(){
-    var pulled = JSON.parse(localStorage.getItem("plant"));
+window.loadJson = function(n){
+    var pulled = JSON.parse(localStorage.getItem("plant"+n));
     if(pulled){
-        global.plant1 = new Plant(pulled);
+        switch(n){
+            case 1:
+                global.plant1 = new Plant(pulled);
+            break;
+            case 2:
+                global.plant2 = new Plant(pulled);
+            break;
+            case 3:
+                global.plant3 = new Plant(pulled);
+            break;
+        }
     }else{
-        alert("No plant stored");
+        alert("No plant "+n+" stored");
     }
 }
 
