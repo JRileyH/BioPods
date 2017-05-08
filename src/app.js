@@ -18,6 +18,9 @@ global.plant1 = new Plant(plantProps1);
 
 var toolbox = new ToolBox();
 
+gameInfo.FAST_TICK = function(){
+    plant1.tick();
+}
 gameInfo.TICK = function(){
     plant1.grow();
 }
@@ -50,6 +53,9 @@ window.startGame = function(cb){
     gameInfo.tickLoop = setInterval(function(){
         gameInfo.TICK();
     },Math.floor(gameInfo.TICK_INT/gameInfo.SPEED));
+    gameInfo.fasttickLoop = setInterval(function(){
+        gameInfo.FAST_TICK();
+    },gameInfo.FAST_TICK_INT);
     gameInfo.renderLoop = setInterval(function(){
         gameInfo.RENDER();
     },gameInfo.RENDER_INT);

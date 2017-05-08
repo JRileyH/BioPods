@@ -69,6 +69,12 @@ export default class PlantPart {
             return this.parent;
         }
     }
+    tick(){
+        for(let child of this.children) {
+            child.tick();
+        }
+        return this;
+    }
     grow(){
         for(let child of this.children) {
             child.grow();

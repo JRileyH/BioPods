@@ -71,6 +71,9 @@ export default class Plant {
     reset(){
         //TODO: I have to find a way to find the max level after a prune that doesn fuck up with gameloops using the max level ansynchronously.. or do I?
     }
+    tick(){
+        this.seed.tick()
+    }
     grow(){
         this.seed.grow();
     }
