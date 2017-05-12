@@ -7,7 +7,7 @@ export default class Segment extends require('./part').default{
     }
     grow(){
         super.grow();
-        this.width = this.plant.trunkWidth - Math.floor(this.level/(this.plant.maxLevel / this.plant.trunkWidth));
+        this.width = this.props.width - Math.floor(this.level/(this.plant.maxLevel / this.props.width));
         this.width = Math.min(this.width, this.plant.maxLevel-10);
     }
     render(ctx){

@@ -4,12 +4,18 @@ export default class PlantPart {
         this.plant = plant;
         this.id = this.plant.availableId++;
         this.parent = source;
+        this.width = 1;
         this.children = [];
         this.level = !!source ? source.level+1 : 0;
         if(this._verifyProps(props)) {
             this.pos = props.pos;
             this.dir = this._clampDir(props.dir);
         }
+    }
+    _count() {
+        this.props = this.plant[this.type];
+        this.props.count++;
+        return this;
     }
     _verifyProps(props) {
         if(!props.hasOwnProperty('pos')&&props.pos.geom==="point") {console.error("MISSING PROPS.POS"); return false;}
@@ -52,9 +58,8 @@ export default class PlantPart {
         return this;
     }
 
-    destroyChild(id){
+    destroyChild(id){      
         this.children = this.children.filter(function(x){ return x.id != id; });
-
         return this;
     }
     destroy(){
@@ -64,10 +69,37 @@ export default class PlantPart {
             this.parent.destroyChild(this.id);
             //reestablish tree stats
             this.traverse_bfs(n=>{
-                this.plant.counts[n.type]--;
+                this.props.count--;
             });
             return this.parent;
         }
+    }
+    make(type, props, cb){
+        if(this.plant[type].max===null || this.plant[type].count < this.plant[type].max){
+            var child = new (require('./'+type).default)(this.plant, this, props);
+            this.children.push(child);
+            if(cb) cb();
+            return child;
+        }
+        return false;
+    }
+    leave(type, cb){
+        if(this.plant[type].max===null || this.plant[type].count < this.plant[type].max){
+            var parent = new (require('./'+type).default)(this.plant, this.parent, {pos:this.pos.copy(), dir: this.dir})
+            this.parent.destroyChild(this.id);
+            this.parent.children.push(parent);
+            this.parent = parent;
+            this.parent.children.push(this);
+            this.level++;
+            if(this.level>this.plant.maxLevel)this.plant.maxLevel = this.level;
+            this.pos.slide(
+                Math.floor(this.plant[type].length*Math.sin(Math.toRad(this.dir))),
+                -Math.floor(this.plant[type].length*Math.cos(Math.toRad(this.dir)))
+            )
+            if(cb)cb();
+            return parent;
+        }
+        return false; 
     }
     tick(){
         for(let child of this.children) {

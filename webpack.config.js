@@ -1,4 +1,3 @@
-const BabiliPlugin = require("babili-webpack-plugin");
 module.exports = {
      entry: './src/app.js',
      output: {
@@ -18,5 +17,6 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    devtool: "source-map"
  };

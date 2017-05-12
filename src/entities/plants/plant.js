@@ -2,21 +2,54 @@ var Point = require('../../geom').default.Point;
 
 export default class Plant {
     constructor(props) {
+        var p;
         this.availableId = 0;
         this.maxLevel = 1;
-        this.segmentLength = props.segmentLength;
-        this.leafLength = props.leafLength;
-        this.leafSharpness = props.leafSharpness;
-        this.leafWidth = props.leafWidth;
-        this.trunkWidth = props.trunkWidth;
         this.growthRate = props.growthRate;
         this.branchRate = props.branchRate;
-        this.maxMeristem = props.maxMeristem;
-        this.counts = {stem:0,meristem:0,joint:0,leaf:0}
+
+        p = props.stem;
+        this.stem = {
+            length: p.length,
+            width: p.width,
+            max: p.max,
+            count: 0,
+        }
+        p = props.leaf;
+        this.leaf = {
+            length: p.length,
+            width: p.width,
+            sharpness: p.sharpness,
+            max:  p.max,
+            count: 0
+        }
+        p = props.meristem;
+        this.meristem = {
+            max: p.max,
+            count: 0
+        }
+        p = props.joint;
+        this.joint = {
+            length: p.length,
+            width: p.width,
+            max: p.max,
+            count: 0
+        }
+        p = props.flower;
+        this.flower = {
+            radius: p.radius,
+            max: p.max,
+            count: 0
+        }
+
         if(props.new) {
             this.pos = props.pos;
             this.seed = new (require('./seed').default)(this, null, {pos:this.pos.copy(),dir:0});
-            this.seed.children.push(new (require('./meristem').default)(this,this.seed,{pos: this.seed.pos.copy(0,-this.segmentLength),dir:0}))
+            this.seed.make('meristem',
+            {
+                pos: this.seed.pos.copy(0,-this.stem.length),
+                dir:0
+            });
         } else {
             this.pos = new Point(props.x, props.y);
             this.seed = this._nodifyJson(props.seed, null)

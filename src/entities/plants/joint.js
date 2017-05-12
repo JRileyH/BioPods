@@ -2,12 +2,18 @@ export default class Joint extends require('./segment').default{
     constructor(plant, source, props) {
         super(plant, source, props);
         this.type="joint";
-        this.plant.counts.joint++;
         var leafDir = Math.chance(0.5) ? this.dir+30 : this.dir-30;
-        this.children.push(new (require('./leaf').default)(this.plant, this, {pos:this.pos.copy(
-            Math.floor(this.plant.segmentLength*Math.sin(Math.toRad(leafDir))),
-            -Math.floor(this.plant.segmentLength*Math.cos(Math.toRad(leafDir)))
-        ),dir:leafDir}));
+        this.make('leaf',
+        {
+            pos:this.pos.copy(
+                Math.floor(this.plant['stem'].length*Math.sin(Math.toRad(leafDir))),
+                -Math.floor(this.plant['stem'].length*Math.cos(Math.toRad(leafDir)))
+            ),
+            dir:leafDir
+        });
+
+        this.flowering = false;
+        this._count();
     }
     _chanceToBranch(){
         var closestMaristem = 999;
@@ -20,11 +26,26 @@ export default class Joint extends require('./segment').default{
     }
     grow(){
         super.grow();
-        if(this.plant.counts.meristem<this.plant.maxMeristem && this._chanceToBranch()){
-            for(let c of this.children){
-                if(c.type==="leaf") c.destroy();
-            }
-            this.children.push(new (require('./meristem').default)(this.plant,this,{pos: this.pos.copy(0,-this.plant.segmentLength),dir:Math.chance(0.5)?this.dir+30:this.dir-30}))
+        if(this._chanceToBranch()){
+            this.make('meristem',
+            {
+                pos: this.pos.copy(0,-this.plant.segmentLength),
+                dir:Math.chance(0.5)?this.dir+30:this.dir-30
+            },
+            ()=>{
+                for(let c of this.children){
+                    if(c.type==="leaf") c.destroy();
+                }
+            });
+        }
+
+        if(!this.flowering) {
+            this.make('flower',
+            {
+                pos:this.pos.copy(),
+                dir:0
+            });
+            this.flowering = true;
         }
     }
 }

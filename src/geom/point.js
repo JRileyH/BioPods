@@ -9,9 +9,14 @@ export default class Point {
         y=y||0;
         return new Point(this.x+x,this.y+y);
     }
-    move(x,y){
-        this.x=x;
-        this.y=y;
+    move(x, y){
+        if(x.geom==="point"){
+            this.x=x.x;
+            this.y=x.y;
+        } else {
+            this.x=x;
+            this.y=y;
+        }
         return this;
     }
     slide(x,y){

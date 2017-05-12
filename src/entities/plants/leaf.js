@@ -1,22 +1,24 @@
-export default class Leaf extends require('./segment').default{
+export default class Leaf extends require('./part').default{
     constructor(plant, source, props) {
         super(plant, source, props);
         this.type="leaf";
-        this.plant.counts.leaf++;
         this.fallen = false;
         this.belowGround = false;
+        this._count();
+
         this.tip = this.pos.copy(
-            Math.floor(this.plant.leafLength*Math.sin(Math.toRad(this.dir))),
-            -Math.floor(this.plant.leafLength*Math.cos(Math.toRad(this.dir)))
+            Math.floor(this.props.length*Math.sin(Math.toRad(this.dir))),
+            -Math.floor(this.props.length*Math.cos(Math.toRad(this.dir)))
         )
         this.edge1 = this.pos.copy(
-            Math.floor((this.plant.leafLength/this.plant.leafSharpness)*Math.sin(Math.toRad(this.dir+this.plant.leafWidth))),
-            -Math.floor((this.plant.leafLength/this.plant.leafSharpness)*Math.cos(Math.toRad(this.dir+this.plant.leafWidth)))
+            Math.floor((this.props.length/this.props.sharpness)*Math.sin(Math.toRad(this.dir+this.props.width))),
+            -Math.floor((this.props.length/this.props.sharpness)*Math.cos(Math.toRad(this.dir+this.props.width)))
         )
         this.edge2 = this.pos.copy(
-            Math.floor((this.plant.leafLength/this.plant.leafSharpness)*Math.sin(Math.toRad(this.dir-this.plant.leafWidth))),
-            -Math.floor((this.plant.leafLength/this.plant.leafSharpness)*Math.cos(Math.toRad(this.dir-this.plant.leafWidth)))
+            Math.floor((this.props.length/this.props.sharpness)*Math.sin(Math.toRad(this.dir-this.props.width))),
+            -Math.floor((this.props.length/this.props.sharpness)*Math.cos(Math.toRad(this.dir-this.props.width)))
         )
+        
     }
     destroy(){
         this.fallen = true;
