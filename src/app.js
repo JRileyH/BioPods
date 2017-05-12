@@ -1,4 +1,5 @@
 require('./utils/math_poly');
+require('./utils/img_poly');
 var Plant = require('./entities').default.Plant;
 var ToolBox = require('./entities').default.ToolBox;
 var Geom = require('./geom').default;
