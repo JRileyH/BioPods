@@ -17,9 +17,9 @@ export default class Pruner extends require('./tool').default{
         super.mouseup(event);
         //find and cut a branch
         this.line.p2.move(event.layerX, event.layerY);
-        this.searchSegments(plant1.seed);
-        this.searchSegments(plant2.seed);
-        this.searchSegments(plant3.seed);
+        plants.forEach(p=>{
+            this.searchSegments(p.seed);
+        })
         this.active = false;
     }
     mousedrag(event){
