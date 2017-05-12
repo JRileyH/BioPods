@@ -1,9 +1,12 @@
 require('./utils/math_poly');
 require('./utils/img_poly');
+var API = require('./api').default;
 var Plant = require('./entities').default.Plant;
 var ToolBox = require('./entities').default.ToolBox;
 var Geom = require('./geom').default;
-
+var Auth = new API.Auth("http://localhost:3000");
+Auth.load()
+Auth.save("cred",{trees:[],time:981234});
 var plantProps1 = {
     new: true,
     pos: new Geom.Point(250,400),
