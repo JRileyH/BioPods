@@ -2,7 +2,8 @@ export default class Joint extends require('./segment').default{
     constructor(plant, source, props) {
         super(plant, source, props);
         this.type="joint";
-        var leafDir = Math.chance(0.5) ? this.dir+30 : this.dir-30;
+        this._count();
+        var leafDir = Math.chance(0.5) ? this.dir+this.props.angle : this.dir-this.props.angle;
         this.make('leaf',
         {
             pos:this.pos.copy(
@@ -13,7 +14,7 @@ export default class Joint extends require('./segment').default{
         });
 
         this.flowering = false;
-        this._count();
+        
     }
     _chanceToBranch(){
         var closestMaristem = 999;
@@ -30,7 +31,7 @@ export default class Joint extends require('./segment').default{
             this.make('meristem',
             {
                 pos: this.pos.copy(0,-this.plant.segmentLength),
-                dir:Math.chance(0.5)?this.dir+30:this.dir-30
+                dir:Math.chance(0.5)?this.dir+this.props.angle:this.dir-this.props.angle
             },
             ()=>{
                 for(let c of this.children){

@@ -22,7 +22,7 @@ export default class Meristem extends require('./part').default{
             this._ctb=null;
             this.leave(Math.chance(this._chanceToBranch()) ? 'joint' : 'stem',
             ()=>{
-                this.dir = this.dir + Math.span(-this.level,this.level);
+                this.dir = this.dir + Math.span(-Math.floor(this.level*this.plant.curlRate),Math.floor(this.level*this.plant.curlRate));
             })
         }
     }

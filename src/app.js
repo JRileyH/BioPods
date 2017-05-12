@@ -9,6 +9,7 @@ var plantProps1 = {
     pos: new Geom.Point(250,400),
     growthRate: 0.03,
     branchRate: 0.1,
+    curlRate:2.5,
     stem: {
         length: 10,
         width: 10,
@@ -26,6 +27,7 @@ var plantProps1 = {
     joint: {
         length: 10,
         width: 10,
+        angle:30,
         max: null
     },
     flower: {
@@ -38,6 +40,7 @@ var plantProps2 = {
     pos: new Geom.Point(700,400),
     growthRate: 0.02,
     branchRate: 0.1,
+    curlRate:1.0,
     stem: {
         length: 8,
         width: 15,
@@ -55,6 +58,7 @@ var plantProps2 = {
     joint: {
         length: 8,
         width: 15,
+        angle:45,
         max: null
     },
     flower: {
@@ -67,6 +71,7 @@ var plantProps3 = {
     pos: new Geom.Point(1250,400),
     growthRate: 0.02,
     branchRate: 0.1,
+    curlRate:0.3,
     stem: {
         length: 12,
         width: 5,
@@ -84,6 +89,7 @@ var plantProps3 = {
     joint: {
         length: 20,
         width: 5,
+        angle:10,
         max: null
     },
     flower: {

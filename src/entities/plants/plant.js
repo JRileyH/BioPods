@@ -7,6 +7,7 @@ export default class Plant {
         this.maxLevel = 1;
         this.growthRate = props.growthRate;
         this.branchRate = props.branchRate;
+        this.curlRate = props.curlRate;
 
         p = props.stem;
         this.stem = {
@@ -32,6 +33,7 @@ export default class Plant {
         this.joint = {
             length: p.length,
             width: p.width,
+            angle: p.angle,
             max: p.max,
             count: 0
         }
