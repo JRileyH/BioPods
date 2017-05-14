@@ -5,9 +5,6 @@ export default class Plant {
         var p;
         this.availableId = 0;
         this.maxLevel = 1;
-        this.growthRate = props.growthRate;
-        this.branchRate = props.branchRate;
-        this.curlRate = props.curlRate;
 
         p = props.stem;
         this.stem = {
@@ -26,6 +23,9 @@ export default class Plant {
         }
         p = props.meristem;
         this.meristem = {
+            growthRate: p.growthRate,
+            branchRate: p.branchRate,
+            curlRate: p.curlRate,
             max: p.max,
             count: 0
         }

@@ -5,14 +5,11 @@ var Plant = require('./entities').default.Plant;
 var ToolBox = require('./entities').default.ToolBox;
 var Geom = require('./geom').default;
 var Auth = new API.Auth("http://localhost:3000");
-Auth.load()
+//Auth.load()
 Auth.save("cred",{trees:[],time:981234});
 var plantProps1 = {
     new: true,
     pos: new Geom.Point(250,400),
-    growthRate: 0.03,
-    branchRate: 0.1,
-    curlRate:2.5,
     stem: {
         length: 10,
         width: 10,
@@ -25,6 +22,9 @@ var plantProps1 = {
         max: null
     },
     meristem: {
+        growthRate: 0.03,
+        branchRate: 0.1,
+        curlRate:2.5,
         max: 10
     },
     joint: {
@@ -41,9 +41,6 @@ var plantProps1 = {
 var plantProps2 = {
     new: true,
     pos: new Geom.Point(700,400),
-    growthRate: 0.02,
-    branchRate: 0.1,
-    curlRate:1.0,
     stem: {
         length: 8,
         width: 15,
@@ -56,6 +53,9 @@ var plantProps2 = {
         max: null
     },
     meristem: {
+        growthRate: 0.02,
+        branchRate: 0.1,
+        curlRate:1.0,
         max: 20
     },
     joint: {
@@ -72,9 +72,6 @@ var plantProps2 = {
 var plantProps3 = {
     new: true,
     pos: new Geom.Point(1250,400),
-    growthRate: 0.02,
-    branchRate: 0.1,
-    curlRate:0.3,
     stem: {
         length: 12,
         width: 5,
@@ -87,6 +84,9 @@ var plantProps3 = {
         max: null
     },
     meristem: {
+        growthRate: 0.06,
+        branchRate: 0.1,
+        curlRate:0.3,
         max: 15
     },
     joint: {
